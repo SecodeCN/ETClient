@@ -279,7 +279,7 @@ namespace ETModel
         [ProtoMember(93, IsRequired = true)]
         public long ActorId { get; set; }
 
-        [ProtoMember(1, TypeName = "ETModel.UnitInfo")]
+        [ProtoMember(1)]
         public List<UnitInfo> Units = new List<UnitInfo>();
 
     }
