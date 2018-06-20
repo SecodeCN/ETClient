@@ -38,8 +38,6 @@ namespace ETModel
                 Game.Scene.AddComponent<ClientFrameComponent>();
                 Game.Scene.AddComponent<MessageDispatherComponent>();
 
-                Game.Hotfix.GotoHotfix();
-
                 #endregion
 
                 uiLogin = GameObject.Find("LoginCanvas");
@@ -112,19 +110,16 @@ namespace ETModel
         private void Update()
         {
             OneThreadSynchronizationContext.Instance.Update();
-            Game.Hotfix.Update?.Invoke();
             Game.EventSystem.Update();
         }
 
         private void LateUpdate()
         {
-            Game.Hotfix.LateUpdate?.Invoke();
             Game.EventSystem.LateUpdate();
         }
 
         private void OnApplicationQuit()
         {
-            Game.Hotfix.OnApplicationQuit?.Invoke();
             Game.Close();
         }
 

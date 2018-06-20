@@ -119,7 +119,6 @@
     <Compile Include="Assets\3rdParty\ETClient\Component\SceneChangeComponent.cs" />
     <Compile Include="Assets\3rdParty\ETClient\Component\TimerComponent.cs" />
     <Compile Include="Assets\3rdParty\ETClient\Entity\Game.cs" />
-    <Compile Include="Assets\3rdParty\ETClient\Entity\Hotfix.cs" />
     <Compile Include="Assets\3rdParty\ETClient\Entity\Scene.cs" />
     <Compile Include="Assets\3rdParty\ETClient\Entity\UnityWebRequestAsync.cs" />
     <Compile Include="Assets\3rdParty\ETClient\Entity\WWWAsync.cs" />

@@ -38,23 +38,12 @@
 			}
 		}
 
-		private static Hotfix hotfix;
-
-		public static Hotfix Hotfix
-		{
-			get
-			{
-				return hotfix ?? (hotfix = new Hotfix());
-			}
-		}
-
-		public static void Close()
+        public static void Close()
 		{
 			scene.Dispose();
 			eventSystem = null;
 			scene = null;
 			objectPool = null;
-			hotfix = null;
 		}
 	}
 }
