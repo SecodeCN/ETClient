@@ -126,7 +126,6 @@ namespace LitJson
         private static readonly object static_writer_lock = new Object();
         #endregion
 
-
         #region Constructors
         static JsonMapper()
         {
@@ -154,7 +153,6 @@ namespace LitJson
             RegisterBaseImporters();
         }
         #endregion
-
 
         #region Private Methods
         private static void AddArrayMetadata(Type type)
@@ -330,7 +328,6 @@ namespace LitJson
             if (reader.Token == JsonToken.ArrayEnd)
                 return null;
 
-            //ILRuntime doesn't support nullable valuetype
             Type underlying_type = inst_type;//Nullable.GetUnderlyingType(inst_type);
             Type value_type = inst_type;
 
@@ -924,7 +921,6 @@ namespace LitJson
             writer.WriteObjectEnd();
         }
         #endregion
-
 
         public static string ToJson(object obj)
         {

@@ -9,13 +9,9 @@ namespace ETModel
 {
 	public sealed class Hotfix : Object
 	{
-#if ILRuntime
-		private ILRuntime.Runtime.Enviorment.AppDomain appDomain;
-#else
 		private Assembly assembly;
-#endif
 
-		private IStaticMethod start;
+        private IStaticMethod start;
 
 		public Action Update;
 		public Action LateUpdate;
@@ -28,28 +24,16 @@ namespace ETModel
 
 		public void GotoHotfix()
 		{
-#if ILRuntime
-			ILHelper.InitILRuntime(this.appDomain);
-#endif
-			this.start.Run();
+			this.start?.Run();
 		}
 
 		public List<Type> GetHotfixTypes()
 		{
-#if ILRuntime
-			if (this.appDomain == null)
-			{
-				return new Type[0];
-			}
-
-			return this.appDomain.LoadedTypes.Values.Select(x => x.ReflectionType);
-#else
 			if (this.assembly == null)
 			{
 				return new List<Type>();
 			}
 			return this.assembly.GetTypes().ToList();
-#endif
 		}
 	}
 }

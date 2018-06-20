@@ -339,6 +339,7 @@
     <Compile Include="Assets\3rdParty\ETClient\Module\Message\RpcException.cs" />
     <Compile Include="Assets\3rdParty\ETClient\Module\Message\Session.cs" />
     <Compile Include="Assets\3rdParty\ETClient\Module\Message\SessionCallbackComponent.cs" />
+    <Compile Include="Assets\3rdParty\ETClient\Module\Message\SessionWrapComponent.cs" />
     <Compile Include="Assets\3rdParty\ETClient\Module\Numeric\INumericWatcher.cs" />
     <Compile Include="Assets\3rdParty\ETClient\Module\Numeric\NumericChangeEvent_NotifyWatcher.cs" />
     <Compile Include="Assets\3rdParty\ETClient\Module\Numeric\NumericComponent.cs" />
@@ -346,6 +347,7 @@
     <Compile Include="Assets\3rdParty\ETClient\Module\Numeric\NumericWatcher_Hp_ShowUI.cs" />
     <Compile Include="Assets\3rdParty\ETClient\Module\Numeric\NumericWatcherAttribute.cs" />
     <Compile Include="Assets\3rdParty\ETClient\Module\Numeric\NumericWatcherComponent.cs" />
+    <Compile Include="Assets\3rdParty\ETClient\Module\SessionWrap.cs" />
     <Compile Include="Assets\3rdParty\ETClient\Other\AppType.cs" />
     <Compile Include="Assets\3rdParty\ETClient\Other\Define.cs" />
     <Compile Include="Assets\3rdParty\ETClient\Other\IInstanceMethod.cs" />
