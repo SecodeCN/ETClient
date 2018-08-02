@@ -64,8 +64,10 @@ namespace ETModel
 
                 Session session = Game.Scene.GetComponent<NetOuterComponent>().Create(connetEndPoint);
                 sessionWrap = new SessionWrap(session);
-                R2C_Login r2CLogin = (R2C_Login)await sessionWrap.Call(new C2R_Login() { Account = nickname.text, Password = "111111" });
+                R2C_Login r2CLogin = (R2C_Login)await sessionWrap.Call(new C2R_Login() { Account = nickname.text, Password = password.text });
                 sessionWrap.Dispose();
+
+                print(r2CLogin.Address);
 
                 connetEndPoint = NetworkHelper.ToIPEndPoint(r2CLogin.Address);
                 Session gateSession = Game.Scene.GetComponent<NetOuterComponent>().Create(connetEndPoint);

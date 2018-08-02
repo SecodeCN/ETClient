@@ -392,6 +392,9 @@
     <Reference Include="MongoDB.Bson">
       <HintPath>F:/UnityProjects/Components/ETClient/Assets/Plugins/MongoDB.Bson.dll</HintPath>
     </Reference>
+    <Reference Include="protobuf-net">
+      <HintPath>F:/UnityProjects/Components/ETClient/Assets/Plugins/protobuf-net.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.Analytics">
       <HintPath>C:/Users/wrq/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.analytics@2.0.16/UnityEngine.Analytics.dll</HintPath>
     </Reference>
@@ -400,9 +403,6 @@
     </Reference>
     <Reference Include="UnityEngine.StandardEvents">
       <HintPath>C:/Users/wrq/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.standardevents@1.0.13/UnityEngine.StandardEvents.dll</HintPath>
-    </Reference>
-    <Reference Include="protobuf-net">
-      <HintPath>F:/UnityProjects/Components/ETClient/Assets/Plugins/protobuf-net.dll</HintPath>
     </Reference>
     <Reference Include="mscorlib">
       <HintPath>E:/Unity2018.1.0/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/mscorlib.dll</HintPath>
