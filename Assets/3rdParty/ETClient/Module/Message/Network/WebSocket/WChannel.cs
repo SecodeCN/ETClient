@@ -6,13 +6,13 @@ using System.Threading;
 
 namespace ETModel
 {
-    public class WChannel: AChannel
+    public class WChannel : AChannel
     {
         public HttpListenerWebSocketContext WebSocketContext { get; }
 
         private readonly WebSocket webSocket;
 
-		private readonly Queue<byte[]> queue = new Queue<byte[]>();
+        private readonly Queue<byte[]> queue = new Queue<byte[]>();
 
         private bool isSending;
 
@@ -20,28 +20,32 @@ namespace ETModel
 
         private readonly MemoryStream memoryStream;
 
+        private readonly MemoryStream recvStream;
+
         private CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();
-        
-        public WChannel(HttpListenerWebSocketContext webSocketContext, AService service): base(service, ChannelType.Accept)
+
+        public WChannel(HttpListenerWebSocketContext webSocketContext, AService service) : base(service, ChannelType.Accept)
         {
             this.InstanceId = IdGenerater.GenerateId();
-            
+
             this.WebSocketContext = webSocketContext;
 
             this.webSocket = webSocketContext.WebSocket;
-            
+
             this.memoryStream = this.GetService().MemoryStreamManager.GetStream("message", ushort.MaxValue);
+            this.recvStream = this.GetService().MemoryStreamManager.GetStream("message", ushort.MaxValue);
 
             isConnected = true;
         }
-        
-        public WChannel(WebSocket webSocket, AService service): base(service, ChannelType.Connect)
+
+        public WChannel(WebSocket webSocket, AService service) : base(service, ChannelType.Connect)
         {
             this.InstanceId = IdGenerater.GenerateId();
 
             this.webSocket = webSocket;
-            
+
             this.memoryStream = this.GetService().MemoryStreamManager.GetStream("message", ushort.MaxValue);
+            this.recvStream = this.GetService().MemoryStreamManager.GetStream("message", ushort.MaxValue);
 
             isConnected = false;
         }
@@ -52,15 +56,15 @@ namespace ETModel
             {
                 return;
             }
-            
+
             base.Dispose();
-            
+
             this.cancellationTokenSource.Cancel();
             this.cancellationTokenSource.Dispose();
             this.cancellationTokenSource = null;
-            
+
             this.webSocket.Dispose();
-            
+
             this.memoryStream.Dispose();
         }
 
@@ -71,7 +75,7 @@ namespace ETModel
                 return this.memoryStream;
             }
         }
-        
+
         public override void Start()
         {
             if (!this.isConnected)
@@ -81,7 +85,7 @@ namespace ETModel
             this.StartRecv();
             this.StartSend();
         }
-        
+
         private WService GetService()
         {
             return (WService)this.service;
@@ -126,9 +130,9 @@ namespace ETModel
                 {
                     return;
                 }
-            
+
                 this.isSending = true;
-            
+
                 while (true)
                 {
                     if (this.queue.Count == 0)
@@ -173,11 +177,11 @@ namespace ETModel
                     try
                     {
 #if SERVER
-                        ValueWebSocketReceiveResult receiveResult = await this.webSocket.ReceiveAsync(new Memory<byte>(this.Stream.GetBuffer(), 0, this.Stream.Capacity), cancellationTokenSource.Token);
+                        ValueWebSocketReceiveResult receiveResult = await this.webSocket.ReceiveAsync(new Memory<byte>(this.recvStream.GetBuffer(), 0, this.recvStream.Capacity), cancellationTokenSource.Token);
 #else
-                        WebSocketReceiveResult receiveResult = await this.webSocket.ReceiveAsync(new ArraySegment<byte>(this.Stream.GetBuffer(), 0, this.Stream.Capacity), cancellationTokenSource.Token);
+                        WebSocketReceiveResult receiveResult = await this.webSocket.ReceiveAsync(new ArraySegment<byte>(this.recvStream.GetBuffer(), 0, this.recvStream.Capacity), cancellationTokenSource.Token);
 #endif
-                        
+
                         if (this.IsDisposed)
                         {
                             return;
@@ -194,9 +198,9 @@ namespace ETModel
                             this.OnError(ErrorCode.ERR_WebsocketMessageTooBig);
                             return;
                         }
-                        
-                        this.Stream.SetLength(receiveResult.Count);
-                        this.OnRead(this.Stream);
+
+                        this.recvStream.SetLength(receiveResult.Count);
+                        this.OnRead(this.recvStream);
                     }
                     catch (Exception)
                     {
