@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Sockets;
+using Microsoft.IO;
 
 namespace ETModel
 {
@@ -18,40 +20,52 @@ namespace ETModel
 		private readonly CircularBuffer recvBuffer = new CircularBuffer();
 		private readonly CircularBuffer sendBuffer = new CircularBuffer();
 
+		private readonly MemoryStream memoryStream;
+
 		private bool isSending;
+
+		private bool isRecving;
 
 		private bool isConnected;
 
-		public readonly PacketParser parser;
+		private readonly PacketParser parser;
 
+		private readonly byte[] cache = new byte[Packet.SizeLength];
+		
 		public TChannel(IPEndPoint ipEndPoint, TService service): base(service, ChannelType.Connect)
 		{
+			this.InstanceId = IdGenerater.GenerateId();
+			this.memoryStream = this.GetService().MemoryStreamManager.GetStream("message", ushort.MaxValue);
+			
 			this.socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
 			this.socket.NoDelay = true;
-			this.parser = new PacketParser(this.recvBuffer);
+			this.parser = new PacketParser(this.recvBuffer, this.memoryStream);
 			this.innArgs.Completed += this.OnComplete;
 			this.outArgs.Completed += this.OnComplete;
-			this.innArgs.UserToken = new UserTokenInfo() { InstanceId = this.InstanceId };
-			this.outArgs.UserToken = new UserTokenInfo() { InstanceId = this.InstanceId };
 
 			this.RemoteAddress = ipEndPoint;
+
+			this.isConnected = false;
+			this.isSending = false;
 		}
 		
 		public TChannel(Socket socket, TService service): base(service, ChannelType.Accept)
 		{
+			this.InstanceId = IdGenerater.GenerateId();
+			this.memoryStream = this.GetService().MemoryStreamManager.GetStream("message", ushort.MaxValue);
+			
 			this.socket = socket;
 			this.socket.NoDelay = true;
-			this.parser = new PacketParser(this.recvBuffer);
+			this.parser = new PacketParser(this.recvBuffer, this.memoryStream);
 			this.innArgs.Completed += this.OnComplete;
 			this.outArgs.Completed += this.OnComplete;
-			this.innArgs.UserToken = new UserTokenInfo() { InstanceId = this.InstanceId };
-			this.outArgs.UserToken = new UserTokenInfo() { InstanceId = this.InstanceId };
 
 			this.RemoteAddress = (IPEndPoint)socket.RemoteEndPoint;
 			
 			this.isConnected = true;
+			this.isSending = false;
 		}
-		
+
 		public override void Dispose()
 		{
 			if (this.IsDisposed)
@@ -67,6 +81,20 @@ namespace ETModel
 			this.innArgs = null;
 			this.outArgs = null;
 			this.socket = null;
+			this.memoryStream.Dispose();
+		}
+		
+		private TService GetService()
+		{
+			return (TService)this.service;
+		}
+
+		public override MemoryStream Stream
+		{
+			get
+			{
+				return this.memoryStream;
+			}
 		}
 
 		public override void Start()
@@ -76,42 +104,39 @@ namespace ETModel
 				this.ConnectAsync(this.RemoteAddress);
 				return;
 			}
-			this.StartRecv();
-			this.StartSend();
-		}
 
-		public override void Send(byte[] buffer, int index, int length)
+			if (!this.isRecving)
+			{
+				this.isRecving = true;
+				this.StartRecv();
+			}
+
+			this.GetService().MarkNeedStartSend(this.Id);
+		}
+		
+		public override void Send(MemoryStream stream)
 		{
 			if (this.IsDisposed)
 			{
 				throw new Exception("TChannel已经被Dispose, 不能发送消息");
 			}
-			byte[] sizeBuffer = BitConverter.GetBytes(length);
-			this.sendBuffer.Write(sizeBuffer, 0, sizeBuffer.Length);
-			this.sendBuffer.Write(buffer, index, length);
-			if (this.isConnected && !this.isSending)
-			{
-				this.StartSend();
-			}
-		}
 
-		public override void Send(List<byte[]> buffers)
-		{
-			if (this.IsDisposed)
+			switch (Packet.SizeLength)
 			{
-				throw new Exception("TChannel已经被Dispose, 不能发送消息");
+				case 4:
+					this.cache.WriteTo(0, (int) stream.Length);
+					break;
+				case 2:
+					this.cache.WriteTo(0, (ushort) stream.Length);
+					break;
+				default:
+					throw new Exception("packet size must be 2 or 4!");
 			}
-			ushort size = (ushort)buffers.Select(b => b.Length).Sum();
-			byte[] sizeBuffer = BitConverter.GetBytes(size);
-			this.sendBuffer.Write(sizeBuffer, 0, sizeBuffer.Length);
-			foreach (byte[] buffer in buffers)
-			{
-				this.sendBuffer.Write(buffer, 0, buffer.Length);
-			}
-			if (this.isConnected && !this.isSending)
-			{
-				this.StartSend();
-			}
+
+			this.sendBuffer.Write(this.cache, 0, this.cache.Length);
+			this.sendBuffer.Write(stream);
+
+			this.GetService().MarkNeedStartSend(this.Id);
 		}
 
 		private void OnComplete(object sender, SocketAsyncEventArgs e)
@@ -147,18 +172,12 @@ namespace ETModel
 
 		private void OnConnectComplete(object o)
 		{
-			if (this.IsDisposed)
+			if (this.socket == null)
 			{
-				throw new Exception("TChannel已经被Dispose, 不能发送消息");
-			}
-			SocketAsyncEventArgs e = (SocketAsyncEventArgs) o;
-			UserTokenInfo userTokenInfo = (UserTokenInfo) e.UserToken;
-			if (userTokenInfo.InstanceId != this.InstanceId)
-			{
-				Log.Error($"session disposed!");
 				return;
 			}
-
+			SocketAsyncEventArgs e = (SocketAsyncEventArgs) o;
+			
 			if (e.SocketError != SocketError.Success)
 			{
 				this.OnError((int)e.SocketError);	
@@ -203,17 +222,11 @@ namespace ETModel
 
 		private void OnRecvComplete(object o)
 		{
-			if (this.IsDisposed)
+			if (this.socket == null)
 			{
-				throw new Exception("TChannel已经被Dispose, 不能发送消息");
-			}
-			SocketAsyncEventArgs e = (SocketAsyncEventArgs)o;
-			UserTokenInfo userTokenInfo = (UserTokenInfo) e.UserToken;
-			if (userTokenInfo.InstanceId != this.InstanceId)
-			{
-				Log.Error($"session disposed!");
 				return;
 			}
+			SocketAsyncEventArgs e = (SocketAsyncEventArgs) o;
 
 			if (e.SocketError != SocketError.Success)
 			{
@@ -223,7 +236,7 @@ namespace ETModel
 
 			if (e.BytesTransferred == 0)
 			{
-				this.OnError((int)e.SocketError);
+				this.OnError(ErrorCode.ERR_PeerDisconnect);
 				return;
 			}
 
@@ -242,10 +255,10 @@ namespace ETModel
 					break;
 				}
 
-				Packet packet = this.parser.GetPacket();
+				MemoryStream stream = this.parser.GetPacket();
 				try
 				{
-					this.OnRead(packet);
+					this.OnRead(stream);
 				}
 				catch (Exception exception)
 				{
@@ -253,15 +266,23 @@ namespace ETModel
 				}
 			}
 
-			if (userTokenInfo.InstanceId != this.InstanceId)
+			if (this.socket == null)
 			{
 				return;
 			}
+			
 			this.StartRecv();
 		}
 
-		private void StartSend()
+		public bool IsSending => this.isSending;
+
+		public void StartSend()
 		{
+			if(!this.isConnected)
+			{
+				return;
+			}
+			
 			// 没有数据需要发送
 			if (this.sendBuffer.Length == 0)
 			{
@@ -299,30 +320,31 @@ namespace ETModel
 
 		private void OnSendComplete(object o)
 		{
-			if (this.IsDisposed)
+			if (this.socket == null)
 			{
-				throw new Exception("TChannel已经被Dispose, 不能发送消息");
-			}
-			SocketAsyncEventArgs e = (SocketAsyncEventArgs)o;
-			UserTokenInfo userTokenInfo = (UserTokenInfo) e.UserToken;
-			if (userTokenInfo.InstanceId != this.InstanceId)
-			{
-				Log.Error($"session disposed!");
 				return;
 			}
+			SocketAsyncEventArgs e = (SocketAsyncEventArgs) o;
 
 			if (e.SocketError != SocketError.Success)
 			{
 				this.OnError((int)e.SocketError);
 				return;
 			}
+			
+			if (e.BytesTransferred == 0)
+			{
+				this.OnError(ErrorCode.ERR_PeerDisconnect);
+				return;
+			}
+			
 			this.sendBuffer.FirstIndex += e.BytesTransferred;
 			if (this.sendBuffer.FirstIndex == this.sendBuffer.ChunkSize)
 			{
 				this.sendBuffer.FirstIndex = 0;
 				this.sendBuffer.RemoveFirst();
 			}
-
+			
 			this.StartSend();
 		}
 	}

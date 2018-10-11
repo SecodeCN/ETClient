@@ -73,7 +73,6 @@
     <Compile Include="Assets\3rdParty\ETClient\Base\Helper\MethodInfoHelper.cs" />
     <Compile Include="Assets\3rdParty\ETClient\Base\Helper\NetHelper.cs" />
     <Compile Include="Assets\3rdParty\ETClient\Base\Helper\ObjectHelper.cs" />
-    <Compile Include="Assets\3rdParty\ETClient\Base\Helper\ProtobufHelper.cs" />
     <Compile Include="Assets\3rdParty\ETClient\Base\Helper\RandomHelper.cs" />
     <Compile Include="Assets\3rdParty\ETClient\Base\Helper\StringHelper.cs" />
     <Compile Include="Assets\3rdParty\ETClient\Base\Helper\TimeHelper.cs" />
@@ -90,6 +89,7 @@
     <Compile Include="Assets\3rdParty\ETClient\Base\Math\VLine.cs" />
     <Compile Include="Assets\3rdParty\ETClient\Base\Math\VRect.cs" />
     <Compile Include="Assets\3rdParty\ETClient\Base\MultiMap.cs" />
+    <Compile Include="Assets\3rdParty\ETClient\Base\Object\BaseAttribute.cs" />
     <Compile Include="Assets\3rdParty\ETClient\Base\Object\Component.cs" />
     <Compile Include="Assets\3rdParty\ETClient\Base\Object\ComponentFactory.cs" />
     <Compile Include="Assets\3rdParty\ETClient\Base\Object\ComponentWithId.cs" />
@@ -123,14 +123,21 @@
     <Compile Include="Assets\3rdParty\ETClient\Entity\UnityWebRequestAsync.cs" />
     <Compile Include="Assets\3rdParty\ETClient\Entity\WWWAsync.cs" />
     <Compile Include="Assets\3rdParty\ETClient\Helper\ActionHelper.cs" />
+    <Compile Include="Assets\3rdParty\ETClient\Helper\Dumper.cs" />
     <Compile Include="Assets\3rdParty\ETClient\Helper\GameObjectHelper.cs" />
     <Compile Include="Assets\3rdParty\ETClient\Helper\PathHelper.cs" />
     <Compile Include="Assets\3rdParty\ETClient\Helper\PositionHelper.cs" />
     <Compile Include="Assets\3rdParty\ETClient\Helper\ResourcesHelper.cs" />
+    <Compile Include="Assets\3rdParty\ETClient\Module\ActorLocation\IActorLocationMessage.cs" />
+    <Compile Include="Assets\3rdParty\ETClient\Module\Filter\FilterAttribute.cs" />
+    <Compile Include="Assets\3rdParty\ETClient\Module\Filter\FilterComponent.cs" />
+    <Compile Include="Assets\3rdParty\ETClient\Module\Filter\FilterEntity.cs" />
+    <Compile Include="Assets\3rdParty\ETClient\Module\Filter\IFilter.cs" />
     <Compile Include="Assets\3rdParty\ETClient\Module\FrameSync\AnimatorComponent.cs" />
     <Compile Include="Assets\3rdParty\ETClient\Module\FrameSync\CameraComponent.cs" />
     <Compile Include="Assets\3rdParty\ETClient\Module\FrameSync\ClientFrameComponent.cs" />
     <Compile Include="Assets\3rdParty\ETClient\Module\FrameSync\FrameMessage.cs" />
+    <Compile Include="Assets\3rdParty\ETClient\Module\FrameSync\FrameOpcode.cs" />
     <Compile Include="Assets\3rdParty\ETClient\Module\FrameSync\MoveComponent.cs" />
     <Compile Include="Assets\3rdParty\ETClient\Module\FrameSync\Player.cs" />
     <Compile Include="Assets\3rdParty\ETClient\Module\FrameSync\PlayerComponent.cs" />
@@ -139,7 +146,6 @@
     <Compile Include="Assets\3rdParty\ETClient\Module\FrameSync\Unit.cs" />
     <Compile Include="Assets\3rdParty\ETClient\Module\FrameSync\UnitComponent.cs" />
     <Compile Include="Assets\3rdParty\ETClient\Module\Message\AMHandler.cs" />
-    <Compile Include="Assets\3rdParty\ETClient\Module\Message\ClientDispatcher.cs" />
     <Compile Include="Assets\3rdParty\ETClient\Module\Message\ErrorCode.cs" />
     <Compile Include="Assets\3rdParty\ETClient\Module\Message\IActorMessage.cs" />
     <Compile Include="Assets\3rdParty\ETClient\Module\Message\IMessage.cs" />
@@ -150,8 +156,10 @@
     <Compile Include="Assets\3rdParty\ETClient\Module\Message\MessageDispatherComponent.cs" />
     <Compile Include="Assets\3rdParty\ETClient\Module\Message\MessageHandlerAttribute.cs" />
     <Compile Include="Assets\3rdParty\ETClient\Module\Message\MessageInfo.cs" />
+    <Compile Include="Assets\3rdParty\ETClient\Module\Message\MessagePool.cs" />
     <Compile Include="Assets\3rdParty\ETClient\Module\Message\MessageProxy.cs" />
     <Compile Include="Assets\3rdParty\ETClient\Module\Message\NetOuterComponent.cs" />
+    <Compile Include="Assets\3rdParty\ETClient\Module\Message\NetOuterComponentSystem.cs" />
     <Compile Include="Assets\3rdParty\ETClient\Module\Message\Network\AChannel.cs" />
     <Compile Include="Assets\3rdParty\ETClient\Module\Message\Network\AService.cs" />
     <Compile Include="Assets\3rdParty\ETClient\Module\Message\Network\Circularbuffer.cs" />
@@ -162,17 +170,20 @@
     <Compile Include="Assets\3rdParty\ETClient\Module\Message\Network\TCP\PacketParser.cs" />
     <Compile Include="Assets\3rdParty\ETClient\Module\Message\Network\TCP\TChannel.cs" />
     <Compile Include="Assets\3rdParty\ETClient\Module\Message\Network\TCP\TService.cs" />
+    <Compile Include="Assets\3rdParty\ETClient\Module\Message\Network\WebSocket\WChannel.cs" />
+    <Compile Include="Assets\3rdParty\ETClient\Module\Message\Network\WebSocket\WService.cs" />
     <Compile Include="Assets\3rdParty\ETClient\Module\Message\NetworkComponent.cs" />
     <Compile Include="Assets\3rdParty\ETClient\Module\Message\Opcode.cs" />
     <Compile Include="Assets\3rdParty\ETClient\Module\Message\OpcodeHelper.cs" />
     <Compile Include="Assets\3rdParty\ETClient\Module\Message\OpcodeTypeComponent.cs" />
     <Compile Include="Assets\3rdParty\ETClient\Module\Message\OuterMessage.cs" />
+    <Compile Include="Assets\3rdParty\ETClient\Module\Message\OuterMessageDispatcher.cs" />
     <Compile Include="Assets\3rdParty\ETClient\Module\Message\OuterOpcode.cs" />
+    <Compile Include="Assets\3rdParty\ETClient\Module\Message\ProtobufHelper.cs" />
     <Compile Include="Assets\3rdParty\ETClient\Module\Message\ProtobufPacker.cs" />
     <Compile Include="Assets\3rdParty\ETClient\Module\Message\RpcException.cs" />
     <Compile Include="Assets\3rdParty\ETClient\Module\Message\Session.cs" />
     <Compile Include="Assets\3rdParty\ETClient\Module\Message\SessionCallbackComponent.cs" />
-    <Compile Include="Assets\3rdParty\ETClient\Module\Message\SessionWrapComponent.cs" />
     <Compile Include="Assets\3rdParty\ETClient\Module\Numeric\INumericWatcher.cs" />
     <Compile Include="Assets\3rdParty\ETClient\Module\Numeric\NumericChangeEvent_NotifyWatcher.cs" />
     <Compile Include="Assets\3rdParty\ETClient\Module\Numeric\NumericComponent.cs" />
@@ -180,19 +191,26 @@
     <Compile Include="Assets\3rdParty\ETClient\Module\Numeric\NumericWatcher_Hp_ShowUI.cs" />
     <Compile Include="Assets\3rdParty\ETClient\Module\Numeric\NumericWatcherAttribute.cs" />
     <Compile Include="Assets\3rdParty\ETClient\Module\Numeric\NumericWatcherComponent.cs" />
-    <Compile Include="Assets\3rdParty\ETClient\Module\SessionWrap.cs" />
+    <Compile Include="Assets\3rdParty\ETClient\Module\UI\CanvasConfig.cs" />
+    <Compile Include="Assets\3rdParty\ETClient\Module\UI\IUIFactory.cs" />
+    <Compile Include="Assets\3rdParty\ETClient\Module\UI\LayerNames.cs" />
+    <Compile Include="Assets\3rdParty\ETClient\Module\UI\UI.cs" />
+    <Compile Include="Assets\3rdParty\ETClient\Module\UI\UIComponent.cs" />
+    <Compile Include="Assets\3rdParty\ETClient\Module\UI\UIFactoryAttribute.cs" />
+    <Compile Include="Assets\3rdParty\ETClient\Module\UI\UIType.cs" />
     <Compile Include="Assets\3rdParty\ETClient\Other\AppType.cs" />
     <Compile Include="Assets\3rdParty\ETClient\Other\Define.cs" />
+    <Compile Include="Assets\3rdParty\ETClient\Other\ECSView.cs" />
     <Compile Include="Assets\3rdParty\ETClient\Other\IInstanceMethod.cs" />
     <Compile Include="Assets\3rdParty\ETClient\Other\MonoMethod.cs" />
     <Compile Include="Assets\3rdParty\ETClient\Other\MotionType.cs" />
     <Compile Include="Assets\3rdParty\ETClient\Other\ReferenceCollector.cs" />
     <Compile Include="Assets\Scripts\Init.cs" />
     <Reference Include="UnityEditor.StandardEvents">
-      <HintPath>F:/UnityProjects/Components/ETClient/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
+      <HintPath>P:/UnityProjects/Components/ETClient/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>
     <Reference Include="Unity.PackageManagerUI.Editor">
-      <HintPath>F:/UnityProjects/Components/ETClient/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
+      <HintPath>P:/UnityProjects/Components/ETClient/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>E:/Unity2018.1.0/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
@@ -390,10 +408,10 @@
       <HintPath>E:/Unity2018.1.0/Editor/Data/UnityExtensions/Unity/UnitySpatialTracking/RuntimeEditor/UnityEngine.SpatialTracking.dll</HintPath>
     </Reference>
     <Reference Include="MongoDB.Bson">
-      <HintPath>F:/UnityProjects/Components/ETClient/Assets/Plugins/MongoDB.Bson.dll</HintPath>
+      <HintPath>P:/UnityProjects/Components/ETClient/Assets/Plugins/MongoDB.Bson.dll</HintPath>
     </Reference>
     <Reference Include="protobuf-net">
-      <HintPath>F:/UnityProjects/Components/ETClient/Assets/Plugins/protobuf-net.dll</HintPath>
+      <HintPath>P:/UnityProjects/Components/ETClient/Assets/Plugins/protobuf-net.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.Analytics">
       <HintPath>C:/Users/wrq/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.analytics@2.0.16/UnityEngine.Analytics.dll</HintPath>

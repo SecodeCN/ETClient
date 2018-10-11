@@ -38,7 +38,7 @@
 			}
 		}
 
-        public static void Close()
+		public static void Close()
 		{
 			scene.Dispose();
 			eventSystem = null;

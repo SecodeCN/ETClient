@@ -91,11 +91,11 @@ namespace ETModel
         }
 
 		/// <summary>
-		/// 从CircularBuffer写到stream流中
+		/// 从CircularBuffer读到stream中
 		/// </summary>
 		/// <param name="stream"></param>
 		/// <returns></returns>
-		public async Task WriteToAsync(Stream stream)
+		public async Task ReadAsync(Stream stream)
 	    {
 		    long buffLength = this.Length;
 			int sendSize = this.ChunkSize - this.FirstIndex;
@@ -114,12 +114,71 @@ namespace ETModel
 		    }
 		}
 
-		/// <summary>
-		/// 从stream流读到CircularBuffer中
+	    // 从CircularBuffer读到stream
+	    public void Read(Stream stream, int count)
+	    {
+		    if (count > this.Length)
+		    {
+			    throw new Exception($"bufferList length < count, {Length} {count}");
+		    }
+
+		    int alreadyCopyCount = 0;
+		    while (alreadyCopyCount < count)
+		    {
+			    int n = count - alreadyCopyCount;
+			    if (ChunkSize - this.FirstIndex > n)
+			    {
+				    stream.Write(this.First, this.FirstIndex, n);
+				    this.FirstIndex += n;
+				    alreadyCopyCount += n;
+			    }
+			    else
+			    {
+				    stream.Write(this.First, this.FirstIndex, ChunkSize - this.FirstIndex);
+				    alreadyCopyCount += ChunkSize - this.FirstIndex;
+				    this.FirstIndex = 0;
+				    this.RemoveFirst();
+			    }
+		    }
+	    }
+	    
+	    // 从stream写入CircularBuffer
+	    public void Write(Stream stream)
+		{
+			int count = (int)(stream.Length - stream.Position);
+			
+			int alreadyCopyCount = 0;
+			while (alreadyCopyCount < count)
+			{
+				if (this.LastIndex == ChunkSize)
+				{
+					this.AddLast();
+					this.LastIndex = 0;
+				}
+
+				int n = count - alreadyCopyCount;
+				if (ChunkSize - this.LastIndex > n)
+				{
+					stream.Read(this.lastBuffer, this.LastIndex, n);
+					this.LastIndex += count - alreadyCopyCount;
+					alreadyCopyCount += n;
+				}
+				else
+				{
+					stream.Read(this.lastBuffer, this.LastIndex, ChunkSize - this.LastIndex);
+					alreadyCopyCount += ChunkSize - this.LastIndex;
+					this.LastIndex = ChunkSize;
+				}
+			}
+		}
+	    
+
+	    /// <summary>
+		///  从stream写入CircularBuffer
 		/// </summary>
 		/// <param name="stream"></param>
 		/// <returns></returns>
-		public async Task<int> ReadFromAsync(Stream stream)
+		public async Task<int> WriteAsync(Stream stream)
 	    {
 		    int size = this.ChunkSize - this.LastIndex;
 		    
@@ -141,6 +200,7 @@ namespace ETModel
 		    return n;
 	    }
 
+	    // 把CircularBuffer中数据写入buffer
         public override int Read(byte[] buffer, int offset, int count)
         {
 	        if (buffer.Length < offset + count)
@@ -176,6 +236,7 @@ namespace ETModel
 	        return count;
         }
 
+	    // 把buffer写入CircularBuffer中
         public override void Write(byte[] buffer, int offset, int count)
         {
 	        int alreadyCopyCount = 0;

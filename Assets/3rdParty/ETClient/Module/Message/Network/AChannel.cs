@@ -1,27 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.IO;
 using System.Net;
 
 namespace ETModel
 {
-	[Flags]
-	public enum PacketFlags
-	{
-		None = 0,
-		Reliable = 1 << 0,
-		Unsequenced = 1 << 1,
-		NoAllocate = 1 << 2
-	}
-
 	public enum ChannelType
 	{
 		Connect,
 		Accept,
-	}
-
-	public class UserTokenInfo
-	{
-		public long InstanceId;
 	}
 
 	public abstract class AChannel: ComponentWithId
@@ -29,6 +15,10 @@ namespace ETModel
 		public ChannelType ChannelType { get; }
 
 		protected AService service;
+
+		public abstract MemoryStream Stream { get; }
+		
+		public int Error { get; set; }
 
 		public IPEndPoint RemoteAddress { get; protected set; }
 
@@ -46,9 +36,9 @@ namespace ETModel
 			}
 		}
 		
-		private Action<Packet> readCallback;
+		private Action<MemoryStream> readCallback;
 
-		public event Action<Packet> ReadCallback
+		public event Action<MemoryStream> ReadCallback
 		{
 			add
 			{
@@ -60,13 +50,14 @@ namespace ETModel
 			}
 		}
 		
-		protected void OnRead(Packet packet)
+		protected void OnRead(MemoryStream memoryStream)
 		{
-			this.readCallback.Invoke(packet);
+			this.readCallback.Invoke(memoryStream);
 		}
 
 		protected void OnError(int e)
 		{
+			this.Error = e;
 			this.errorCallback?.Invoke(this, e);
 		}
 
@@ -78,13 +69,8 @@ namespace ETModel
 		}
 
 		public abstract void Start();
-
-		/// <summary>
-		/// 发送消息
-		/// </summary>
-		public abstract void Send(byte[] buffer, int index, int length);
-
-		public abstract void Send(List<byte[]> buffers);
+		
+		public abstract void Send(MemoryStream stream);
 		
 		public override void Dispose()
 		{

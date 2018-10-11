@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Sockets;
 using System.Threading.Tasks;
+using Microsoft.IO;
 
 namespace ETModel
 {
@@ -14,22 +15,31 @@ namespace ETModel
 		private readonly SocketAsyncEventArgs innArgs = new SocketAsyncEventArgs();
 		private Socket acceptor;
 		
+		public RecyclableMemoryStreamManager MemoryStreamManager = new RecyclableMemoryStreamManager();
+		
+		public HashSet<long> needStartSendChannel = new HashSet<long>();
+		
 		/// <summary>
 		/// 即可做client也可做server
 		/// </summary>
-		public TService(IPEndPoint ipEndPoint)
+		public TService(IPEndPoint ipEndPoint, Action<AChannel> acceptCallback)
 		{
+			this.InstanceId = IdGenerater.GenerateId();
+			this.AcceptCallback += acceptCallback;
+			
 			this.acceptor = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
 			this.acceptor.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.ReuseAddress, true);
-			this.innArgs.Completed += this.OnAcceptComplete;
-			this.innArgs.UserToken = new UserTokenInfo() { InstanceId = this.InstanceId };
+			this.innArgs.Completed += this.OnComplete;
 			
 			this.acceptor.Bind(ipEndPoint);
 			this.acceptor.Listen(1000);
+
+			this.AcceptAsync();
 		}
 
 		public TService()
 		{
+			this.InstanceId = IdGenerater.GenerateId();
 		}
 		
 		public override void Dispose()
@@ -51,11 +61,15 @@ namespace ETModel
 			this.innArgs.Dispose();
 		}
 
-		public override void Start()
+		private void OnComplete(object sender, SocketAsyncEventArgs e)
 		{
-			if (this.acceptor != null)
+			switch (e.LastOperation)
 			{
-				this.AcceptAsync();
+				case SocketAsyncOperation.Accept:
+					OneThreadSynchronizationContext.Instance.Post(this.OnAcceptComplete, e);
+					break;
+				default:
+					throw new Exception($"socket error: {e.LastOperation}");
 			}
 		}
 		
@@ -66,18 +80,16 @@ namespace ETModel
 			{
 				return;
 			}
-			OnAcceptComplete(this, this.innArgs);
+			OnAcceptComplete(this.innArgs);
 		}
 
-		private void OnAcceptComplete(object sender, SocketAsyncEventArgs o)
+		private void OnAcceptComplete(object o)
 		{
-			SocketAsyncEventArgs e = o;
-			UserTokenInfo userTokenInfo = (UserTokenInfo) e.UserToken;
-			if (userTokenInfo.InstanceId != this.InstanceId)
+			if (this.acceptor == null)
 			{
-				Log.Error($"session disposed!");
 				return;
 			}
+			SocketAsyncEventArgs e = (SocketAsyncEventArgs)o;
 			
 			if (e.SocketError != SocketError.Success)
 			{
@@ -96,7 +108,7 @@ namespace ETModel
 				Log.Error(exception);
 			}
 
-			if (userTokenInfo.InstanceId != this.InstanceId)
+			if (this.acceptor == null)
 			{
 				return;
 			}
@@ -119,6 +131,17 @@ namespace ETModel
 			return channel;
 		}
 
+		public override AChannel ConnectChannel(string address)
+		{
+			IPEndPoint ipEndPoint = NetworkHelper.ToIPEndPoint(address);
+			return this.ConnectChannel(ipEndPoint);
+		}
+
+		public void MarkNeedStartSend(long id)
+		{
+			this.needStartSendChannel.Add(id);
+		}
+
 		public override void Remove(long id)
 		{
 			TChannel channel;
@@ -136,6 +159,30 @@ namespace ETModel
 
 		public override void Update()
 		{
+			foreach (long id in this.needStartSendChannel)
+			{
+				TChannel channel;
+				if (!this.idChannels.TryGetValue(id, out channel))
+				{
+					continue;
+				}
+
+				if (channel.IsSending)
+				{
+					continue;
+				}
+
+				try
+				{
+					channel.StartSend();
+				}
+				catch (Exception e)
+				{
+					Log.Error(e);
+				}
+			}
+			
+			this.needStartSendChannel.Clear();
 		}
 	}
 }

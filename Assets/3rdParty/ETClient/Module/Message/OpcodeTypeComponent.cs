@@ -8,17 +8,31 @@ namespace ETModel
 	{
 		public override void Awake(OpcodeTypeComponent self)
 		{
-			self.Awake();
+			self.Load();
+		}
+	}
+	
+	[ObjectSystem]
+	public class OpcodeTypeComponentLoadSystem : LoadSystem<OpcodeTypeComponent>
+	{
+		public override void Load(OpcodeTypeComponent self)
+		{
+			self.Load();
 		}
 	}
 
 	public class OpcodeTypeComponent : Component
 	{
 		private readonly DoubleMap<ushort, Type> opcodeTypes = new DoubleMap<ushort, Type>();
+		
+		private readonly Dictionary<ushort, object> typeMessages = new Dictionary<ushort, object>();
 
-		public void Awake()
+		public void Load()
 		{
-			List<Type> types = Game.EventSystem.GetTypes();
+			this.opcodeTypes.Clear();
+			this.typeMessages.Clear();
+			
+			List<Type> types = Game.EventSystem.GetTypes(typeof(MessageAttribute));
 			foreach (Type type in types)
 			{
 				object[] attrs = type.GetCustomAttributes(typeof(MessageAttribute), false);
@@ -34,6 +48,7 @@ namespace ETModel
 				}
 
 				this.opcodeTypes.Add(messageAttribute.Opcode, type);
+				this.typeMessages.Add(messageAttribute.Opcode, Activator.CreateInstance(type));
 			}
 		}
 
@@ -45,6 +60,17 @@ namespace ETModel
 		public Type GetType(ushort opcode)
 		{
 			return this.opcodeTypes.GetValueByKey(opcode);
+		}
+		
+		// 客户端为了0GC需要消息池，服务端消息需要跨协程不需要消息池
+		public object GetInstance(ushort opcode)
+		{
+#if SERVER
+			Type type = this.GetType(opcode);
+			return Activator.CreateInstance(type);
+#else
+			return this.typeMessages[opcode];
+#endif
 		}
 
 		public override void Dispose()
