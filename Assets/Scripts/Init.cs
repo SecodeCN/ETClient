@@ -57,28 +57,20 @@ namespace ETModel
 
         public async void OnLogin()
         {
-            SessionWrap sessionWrap = null;
             try
             {
                 IPEndPoint connetEndPoint = NetworkHelper.ToIPEndPoint(ServerIP);
 
                 Session session = Game.Scene.GetComponent<NetOuterComponent>().Create(connetEndPoint);
 
-                sessionWrap = new SessionWrap(session);
-                M2C_Reload M2C_Reload = (M2C_Reload)await sessionWrap.Call(new C2M_Reload() { Account = nickname.text, Password = password.text });
-                print(1);
-                print(M2C_Reload.Message);
-                sessionWrap.Dispose();
+                M2C_Reload M2C_Reload = (M2C_Reload)await session.Call(new C2M_Reload() { Account = nickname.text, Password = password.text });
 
-                print(1);
-                print(M2C_Reload.Message);
+                //connetEndPoint = NetworkHelper.ToIPEndPoint(M2C_Reload.Message);
+                //Session gateSession = Game.Scene.GetComponent<NetOuterComponent>().Create(connetEndPoint);
+                //Game.Scene.AddComponent<SessionComponent>().Session = gateSession;
+                Game.Scene.AddComponent<SessionComponent>().Session = session;
 
-                connetEndPoint = NetworkHelper.ToIPEndPoint(M2C_Reload.Message);
-                Session gateSession = Game.Scene.GetComponent<NetOuterComponent>().Create(connetEndPoint);
-                Game.Scene.AddComponent<SessionWrapComponent>().Session = new SessionWrap(gateSession);
-                Game.Scene.AddComponent<SessionComponent>().Session = gateSession;
-
-                G2C_EnterMap G2C_EnterMap = (G2C_EnterMap)await Game.Scene.GetComponent<SessionWrapComponent>().Session.Call(new C2G_EnterMap());
+                G2C_EnterMap G2C_EnterMap = (G2C_EnterMap)await Game.Scene.GetComponent<SessionComponent>().Session.Call(new C2G_EnterMap());
 
                 print("登陆gate成功!");
 
