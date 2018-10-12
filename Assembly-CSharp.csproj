@@ -122,6 +122,10 @@
     <Compile Include="Assets\3rdParty\ETClient\Entity\Scene.cs" />
     <Compile Include="Assets\3rdParty\ETClient\Entity\UnityWebRequestAsync.cs" />
     <Compile Include="Assets\3rdParty\ETClient\Entity\WWWAsync.cs" />
+    <Compile Include="Assets\3rdParty\ETClient\Example\Scripts\Handlers\Actor_TestHandler.cs" />
+    <Compile Include="Assets\3rdParty\ETClient\Example\Scripts\Handlers\Frame_ClickMapHandler.cs" />
+    <Compile Include="Assets\3rdParty\ETClient\Example\Scripts\Handlers\TestHotfixSubscribMonoEvent_LogString.cs" />
+    <Compile Include="Assets\3rdParty\ETClient\Example\Scripts\Init.cs" />
     <Compile Include="Assets\3rdParty\ETClient\Helper\ActionHelper.cs" />
     <Compile Include="Assets\3rdParty\ETClient\Helper\Dumper.cs" />
     <Compile Include="Assets\3rdParty\ETClient\Helper\GameObjectHelper.cs" />
@@ -205,10 +209,6 @@
     <Compile Include="Assets\3rdParty\ETClient\Other\MonoMethod.cs" />
     <Compile Include="Assets\3rdParty\ETClient\Other\MotionType.cs" />
     <Compile Include="Assets\3rdParty\ETClient\Other\ReferenceCollector.cs" />
-    <Compile Include="Assets\Scripts\Handlers\Actor_TestHandler.cs" />
-    <Compile Include="Assets\Scripts\Handlers\Frame_ClickMapHandler.cs" />
-    <Compile Include="Assets\Scripts\Handlers\TestHotfixSubscribMonoEvent_LogString.cs" />
-    <Compile Include="Assets\Scripts\Init.cs" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>P:/UnityProjects/Components/ETClient/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>
