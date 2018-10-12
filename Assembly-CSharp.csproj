@@ -209,6 +209,7 @@
     <Compile Include="Assets\3rdParty\ETClient\Other\MonoMethod.cs" />
     <Compile Include="Assets\3rdParty\ETClient\Other\MotionType.cs" />
     <Compile Include="Assets\3rdParty\ETClient\Other\ReferenceCollector.cs" />
+    <None Include="Assets\3rdParty\ETClient\Readme.txt" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>P:/UnityProjects/Components/ETClient/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>
