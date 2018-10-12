@@ -1,6 +1,9 @@
-### 源框架作者：熊猫，社区参与者 哲学绅士，Justin沙特王子
-### 源框架地址：https://github.com/egametang/ET
-__讨论QQ群 : 474643097__
+### ET客户端组件整理：kkc
+### ET客户端组件开源地址：https://github.com/kkc001/ETClient
+
+### ET源框架作者：熊猫，社区参与者 哲学绅士，Justin沙特王子
+### ET源框架地址：https://github.com/egametang/ET
+__ET源框架讨论QQ群 : 474643097__
 
 ## ETClient版本说明
  1.这是基于ET 4.0 ET客户端的组件版本，适合于学习，或附加其他项目使用
@@ -12,6 +15,6 @@ __讨论QQ群 : 474643097__
  4.不常用代码打包至Dll，需要源码在源框架下寻找
  
 ## ETClient运行使用方法
- 1.直接使用Unity2018打开并运行测试案例
+ 1.使用Unity2018打开并导入组件，运行Example下测试场景
  
  2.服务端版本保持与源框架一致
