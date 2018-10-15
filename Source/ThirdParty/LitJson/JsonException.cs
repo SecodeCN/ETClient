@@ -12,7 +12,7 @@
 using System;
 
 
-namespace LitJson
+namespace ETModel.Json
 {
     public class JsonException : ApplicationException
     {

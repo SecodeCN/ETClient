@@ -15,7 +15,7 @@ using System.IO;
 using System.Text;
 
 
-namespace LitJson
+namespace ETModel.Json
 {
     internal class FsmContext
     {

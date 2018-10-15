@@ -9,7 +9,7 @@
 #endregion
 
 
-namespace LitJson
+namespace ETModel.Json
 {
     internal enum ParserToken
     {
