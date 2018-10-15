@@ -1,16 +1,14 @@
-ET¿Í»§¶Ë×é¼þÕûÀí£ºkkc
-ET¿Í»§¶Ë×é¼þ¿ªÔ´µØÖ·£ºhttps://github.com/kkc001/ETClient
+ETå®¢æˆ·ç«¯ç»„ä»¶æ•´ç†ï¼škkc
+ETå®¢æˆ·ç«¯ç»„ä»¶å¼€æºåœ°å€ï¼šhttps://github.com/kkc001/ETClient
 
-ETÔ´¿ò¼ÜµØÖ·£ºhttps://github.com/egametang/ET
-ÌÖÂÛQQÈº : 474643097
+ETæºæ¡†æž¶åœ°å€ï¼šhttps://github.com/egametang/ET
+è®¨è®ºQQç¾¤ : 474643097
 
-ETClient°æ±¾ËµÃ÷
-1.ÕâÊÇ»ùÓÚET 4.0 ET¿Í»§¶ËµÄ×é¼þ°æ±¾£¬ÊÊºÏÓÚÑ§Ï°£¬»ò¸½¼ÓÆäËûÏîÄ¿Ê¹ÓÃ
-2.Ö»¹©Ñ§Ï°½»Á÷Ê¹ÓÃ£¬ÆäËûÓÃÍ¾½¨ÒéÊ¹ÓÃÐÜÃ¨µÄ×îÐÂ¿ò¼Ü
-3.Õâ¸ö°æ±¾ÊÇÃ»ÓÐÈÈ¸üÐÂµÈ×ÀÃæ¶Ë·Ç±ØÐè¹¦ÄÜ£¬ÊÊºÏ×ÀÃæÓÎÏ·¿ª·¢£¬ÀýÈçVR¿ª·¢
-4.²»³£ÓÃ´úÂë´ò°üÖÁDll£¬ÐèÒªÔ´ÂëÔÚÔ´¿ò¼ÜÏÂÑ°ÕÒ
+ETClientç‰ˆæœ¬è¯´æ˜Ž
+1.è¿™æ˜¯åŸºäºŽET 4.0 ETå®¢æˆ·ç«¯çš„ç»„ä»¶ç‰ˆæœ¬ï¼Œé€‚åˆäºŽå­¦ä¹ ï¼Œæˆ–é™„åŠ å…¶ä»–é¡¹ç›®ä½¿ç”¨
+2.åªä¾›å­¦ä¹ äº¤æµä½¿ç”¨
+3.åªæœ‰ä¸€ä¸ªæžå°çš„å¼€å‘åŒ…dllï¼Œå¯¼å…¥é¡¹ç›®å³å¯ä½¿ç”¨ï¼ŒåŸºäºŽC# 4.5å¼€å‘è¯·ç¡®è®¤é¡¹ç›®å¼€å¯äº†C# 4.Xçš„æ”¯æŒ
 
-ETClient×é¼þÊ¹ÓÃ·½·¨
-1.Ê¹ÓÃUnity2018´ò¿ª²¢µ¼Èë×é¼þ£¬ÔËÐÐExampleÏÂ²âÊÔ³¡¾°
-2.·þÎñ¶Ë°æ±¾±£³ÖÓëÔ´¿ò¼ÜÒ»ÖÂ
-
+ETClientç»„ä»¶ä½¿ç”¨æ–¹æ³•
+1.ä½¿ç”¨Unityæ‰“å¼€å¹¶å¯¼å…¥ç»„ä»¶ï¼Œç¡®è®¤é¡¹ç›®å¼€å¯äº†C# 4.Xçš„æ”¯æŒï¼Œè¿è¡ŒExampleä¸‹æµ‹è¯•åœºæ™¯
+2.æœåŠ¡ç«¯ç‰ˆæœ¬ä¿æŒå‚è€ƒæºæ¡†æž¶
