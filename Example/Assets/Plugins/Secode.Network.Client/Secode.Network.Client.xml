@@ -1,0 +1,1170 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Secode.Network.Client</name>
+    </assembly>
+    <members>
+        <member name="F:Secode.Network.ClientUnitComponent.MyUnit">
+            <summary>
+            玩家自身的单位
+            </summary>
+        </member>
+        <member name="T:Secode.Network.Client.MessageDispatherComponent">
+            <summary>
+            消息分发组件
+            </summary>
+        </member>
+        <member name="F:Secode.Network.Log.TraceAction">
+            <summary>
+            跟踪事件
+            </summary>
+        </member>
+        <member name="F:Secode.Network.Log.WarningAction">
+            <summary>
+            警告事件
+            </summary>
+        </member>
+        <member name="F:Secode.Network.Log.InfoAction">
+            <summary>
+            消息事件
+            </summary>
+        </member>
+        <member name="F:Secode.Network.Log.DebugAction">
+            <summary>
+            测试事件
+            </summary>
+        </member>
+        <member name="F:Secode.Network.Log.ErrorExceptionAction">
+            <summary>
+            错误事件
+            </summary>
+        </member>
+        <member name="F:Secode.Network.Log.ErrorAction">
+            <summary>
+            错误事件
+            </summary>
+        </member>
+        <member name="F:Secode.Network.Log.FatalExceptionAction">
+            <summary>
+            严重错误事件
+            </summary>
+        </member>
+        <member name="F:Secode.Network.Log.FatalAction">
+            <summary>
+            严重错误事件
+            </summary>
+        </member>
+        <member name="F:Secode.Network.Log.LogAction">
+            <summary>
+            Log事件
+            </summary>
+        </member>
+        <member name="M:Secode.Network.Log.Trace(System.Object)">
+            <summary>
+            跟踪
+            </summary>
+            <param name="msg"></param>
+        </member>
+        <member name="M:Secode.Network.Log.Warning(System.Object)">
+            <summary>
+            警告
+            </summary>
+            <param name="msg"></param>
+        </member>
+        <member name="M:Secode.Network.Log.Info(System.Object)">
+            <summary>
+            消息
+            </summary>
+            <param name="msg"></param>
+        </member>
+        <member name="M:Secode.Network.Log.Debug(System.Object)">
+            <summary>
+            测试
+            </summary>
+            <param name="msg"></param>
+        </member>
+        <member name="M:Secode.Network.Log.Error(System.Object)">
+            <summary>
+            错误
+            </summary>
+            <param name="msg"></param>
+        </member>
+        <member name="M:Secode.Network.Log.Fatal(System.Object)">
+            <summary>
+            严重错误
+            </summary>
+            <param name="msg"></param>
+        </member>
+        <member name="P:Secode.Network.LogHandler.LogPath">
+            <summary>
+            输出路径
+            </summary>
+        </member>
+        <member name="M:Secode.Network.LogHandler.Log(Secode.Network.LogType,System.Object)">
+            <summary>
+            Log输出
+            </summary>
+            <param name="type"></param>
+            <param name="msg"></param>
+        </member>
+        <member name="M:Secode.Network.MultiMap`2.GetAll(`0)">
+            <summary>
+            不返回内部的list,copy一份出来
+            </summary>
+            <param name="t"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Secode.Network.MultiMap`2.Item(`0)">
+            <summary>
+            返回内部的list
+            </summary>
+            <param name="t"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Secode.Network.UnOrderMultiMap`2.GetAll(`0)">
+            <summary>
+            不返回内部的list,copy一份出来
+            </summary>
+            <param name="t"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Secode.Network.UnOrderMultiMap`2.Item(`0)">
+            <summary>
+            返回内部的list
+            </summary>
+            <param name="t"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Secode.Network.EnvKey">
+            <summary>
+            一般使用事件名+变量名
+            </summary>
+        </member>
+        <member name="M:Secode.Network.RandomHelper.RandomNumber(System.Int32,System.Int32)">
+            <summary>
+            获取lower与Upper之间的随机数
+            </summary>
+            <param name="lower"></param>
+            <param name="upper"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Secode.Network.TimeHelper.ClientNow">
+            <summary>
+            客户端时间
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="F:Secode.Network.TimerComponent.timeId">
+            <summary>
+            key: time, value: timer id
+            </summary>
+        </member>
+        <member name="T:Secode.Network.Unit">
+            <summary>
+            对象基础单位
+            </summary>
+        </member>
+        <member name="P:Secode.Network.Unit.UnitType">
+            <summary>
+            单位类型
+            </summary>
+        </member>
+        <member name="P:Secode.Network.Unit.PlayerInfo">
+            <summary>
+            角色信息
+            </summary>
+        </member>
+        <member name="M:Secode.Network.Unit.Awake(Secode.Network.UnitType)">
+            <summary>
+            启动
+            </summary>
+            <param name="unitType"></param>
+        </member>
+        <member name="M:Secode.Network.Unit.Awake(Secode.Network.UnitType,Secode.Network.PlayerInfo)">
+            <summary>
+            启动
+            </summary>
+            <param name="unitType"></param>
+            <param name="playerInfo"></param>
+        </member>
+        <member name="M:Secode.Network.Unit.Dispose">
+            <summary>
+            释放
+            </summary>
+        </member>
+        <member name="T:Secode.Network.UnitComponent">
+            <summary>
+            单位组件
+            </summary>
+        </member>
+        <member name="F:Secode.Network.UnitComponent.idUnits">
+            <summary>
+            单位集合
+            </summary>
+        </member>
+        <member name="M:Secode.Network.UnitComponent.Dispose">
+            <summary>
+            释放
+            </summary>
+        </member>
+        <member name="M:Secode.Network.UnitComponent.Contain(Secode.Network.Unit)">
+            <summary>
+            是否包含
+            </summary>
+            <param name="unit"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Secode.Network.UnitComponent.Contain(System.Int64)">
+            <summary>
+            是否包含
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Secode.Network.UnitComponent.Add(Secode.Network.Unit)">
+            <summary>
+            新增
+            </summary>
+            <param name="unit"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Secode.Network.UnitComponent.Get(System.Int64)">
+            <summary>
+            获取
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Secode.Network.UnitComponent.Remove(Secode.Network.Unit)">
+            <summary>
+            移除
+            </summary>
+            <param name="unit"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Secode.Network.UnitComponent.Remove(System.Int64)">
+            <summary>
+            移除
+            </summary>
+            <param name="id"></param>
+        </member>
+        <member name="M:Secode.Network.UnitComponent.RemoveNoDispose(System.Int64)">
+            <summary>
+            移除不销毁
+            </summary>
+            <param name="id"></param>
+        </member>
+        <member name="P:Secode.Network.UnitComponent.Count">
+            <summary>
+            个数
+            </summary>
+        </member>
+        <member name="M:Secode.Network.UnitComponent.GetAll">
+            <summary>
+            获取全部
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Secode.Network.ACategory`1">
+            <summary>
+            管理该所有的配置
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="T:Secode.Network.AConfigComponent">
+            <summary>
+            每个Config的基类
+            </summary>
+        </member>
+        <member name="T:Secode.Network.IConfig">
+            <summary>
+            每个Config的基类
+            </summary>
+        </member>
+        <member name="F:Secode.Network.ErrorCode.ERR_AccountOrPasswordError">
+            <summary>
+            账号或密码错误
+            </summary>
+        </member>
+        <member name="F:Secode.Network.ErrorCode.ERR_ConnectKeyError">
+            <summary>
+            连接钥匙错误
+            </summary>
+        </member>
+        <member name="F:Secode.Network.ErrorCode.ERR_GateNotFoundError">
+            <summary>
+            房间门未找到错误
+            </summary>
+        </member>
+        <member name="F:Secode.Network.ErrorCode.ERR_GateExistError">
+            <summary>
+            新建房间名称已存在错误
+            </summary>
+        </member>
+        <member name="M:Secode.Network.NetworkComponent.Create(System.Net.IPEndPoint)">
+            <summary>
+            创建一个新Session
+            </summary>
+        </member>
+        <member name="M:Secode.Network.NetworkComponent.Create(System.String)">
+            <summary>
+            创建一个新Session
+            </summary>
+        </member>
+        <member name="T:Secode.Network.RpcException">
+            <summary>
+            RPC异常,带ErrorCode
+            </summary>
+        </member>
+        <member name="F:Secode.Network.Session.DebugFrameMessage">
+            <summary>
+            是否Debug输出Frame消息
+            </summary>
+        </member>
+        <member name="F:Secode.Network.Session.DebugMessage">
+            <summary>
+            是否Debug输出消息
+            </summary>
+        </member>
+        <member name="M:Secode.Network.CircularBuffer.ReadAsync(System.IO.Stream)">
+            <summary>
+            从CircularBuffer读到stream中
+            </summary>
+            <param name="stream"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Secode.Network.CircularBuffer.WriteAsync(System.IO.Stream)">
+            <summary>
+             从stream写入CircularBuffer
+            </summary>
+            <param name="stream"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Secode.Network.KChannel.Connect">
+            <summary>
+            发送请求连接消息
+            </summary>
+        </member>
+        <member name="T:Secode.Network.TChannel">
+            <summary>
+            封装Socket,将回调push到主线程处理
+            </summary>
+        </member>
+        <member name="M:Secode.Network.TService.#ctor(System.Net.IPEndPoint,System.Action{Secode.Network.AChannel})">
+            <summary>
+            即可做client也可做server
+            </summary>
+        </member>
+        <member name="T:Secode.Network.NumericWatcherComponent">
+            <summary>
+            监视数值变化组件,分发监听
+            </summary>
+        </member>
+        <member name="T:Secode.Network.Vector3Info">
+            <summary>
+            三维坐标信息
+            </summary>
+        </member>
+        <member name="T:Secode.Network.QuaternionInfo">
+            <summary>
+            四元数坐标信息
+            </summary>
+        </member>
+        <member name="T:Secode.Network.TransformInfo">
+            <summary>
+            变换信息
+            </summary>
+        </member>
+        <member name="P:Secode.Network.TransformInfo.Position">
+            <summary>
+            位置
+            </summary>
+        </member>
+        <member name="P:Secode.Network.TransformInfo.Rotation">
+            <summary>
+            旋转
+            </summary>
+        </member>
+        <member name="P:Secode.Network.TransformInfo.Scale">
+            <summary>
+            放缩
+            </summary>
+        </member>
+        <member name="T:Secode.Network.TransformInfoNoScale">
+            <summary>
+            无放缩变换信息
+            </summary>
+        </member>
+        <member name="P:Secode.Network.TransformInfoNoScale.Position">
+            <summary>
+            位置
+            </summary>
+        </member>
+        <member name="P:Secode.Network.TransformInfoNoScale.Rotation">
+            <summary>
+            旋转
+            </summary>
+        </member>
+        <member name="T:Secode.Network.PlayerInfo">
+            <summary>
+            VR角色信息
+            </summary>
+        </member>
+        <member name="P:Secode.Network.PlayerInfo.PlayerId">
+            <summary>
+            玩家的临时ID
+            </summary>
+        </member>
+        <member name="P:Secode.Network.PlayerInfo.Head">
+            <summary>
+            头盔
+            </summary>
+        </member>
+        <member name="P:Secode.Network.PlayerInfo.LeftHand">
+            <summary>
+            左手手柄
+            </summary>
+        </member>
+        <member name="P:Secode.Network.PlayerInfo.RightHand">
+            <summary>
+            右手手柄
+            </summary>
+        </member>
+        <member name="T:Secode.Network.C2R_Login">
+            <summary>
+            登录请求信息
+            </summary>
+        </member>
+        <member name="P:Secode.Network.C2R_Login.UserID">
+            <summary>
+            帐号
+            </summary>
+        </member>
+        <member name="P:Secode.Network.C2R_Login.Password">
+            <summary>
+            密码
+            </summary>
+        </member>
+        <member name="T:Secode.Network.R2C_Login">
+            <summary>
+            登录回传信息
+            </summary>
+        </member>
+        <member name="P:Secode.Network.R2C_Login.Key">
+            <summary>
+            连接钥匙
+            </summary>
+        </member>
+        <member name="P:Secode.Network.R2C_Login.Gates">
+            <summary>
+            房间门列表
+            </summary>
+        </member>
+        <member name="T:Secode.Network.C2R_NewGate">
+            <summary>
+            新建房间
+            </summary>
+        </member>
+        <member name="P:Secode.Network.C2R_NewGate.Key">
+            <summary>
+            连接钥匙
+            </summary>
+        </member>
+        <member name="P:Secode.Network.C2R_NewGate.Name">
+            <summary>
+            房间名称
+            </summary>
+        </member>
+        <member name="P:Secode.Network.C2R_NewGate.SecretKey">
+            <summary>
+            授权钥匙
+            </summary>
+        </member>
+        <member name="T:Secode.Network.R2C_NewGate">
+            <summary>
+            新建房间回传信息
+            </summary>
+        </member>
+        <member name="P:Secode.Network.R2C_NewGate.Gate">
+            <summary>
+            房间门
+            </summary>
+        </member>
+        <member name="T:Secode.Network.C2G_Link">
+            <summary>
+            连接房间信息
+            </summary>
+        </member>
+        <member name="P:Secode.Network.C2G_Link.Key">
+            <summary>
+            连接钥匙
+            </summary>
+        </member>
+        <member name="P:Secode.Network.C2G_Link.Gate">
+            <summary>
+            房间门
+            </summary>
+        </member>
+        <member name="T:Secode.Network.G2C_Link">
+            <summary>
+            房间连接回传信息
+            </summary>
+        </member>
+        <member name="P:Secode.Network.G2C_Link.PlayerId">
+            <summary>
+            玩家的临时ID
+            </summary>
+        </member>
+        <member name="T:Secode.Network.C2G_Info">
+            <summary>
+            请求用户信息
+            </summary>
+        </member>
+        <member name="P:Secode.Network.C2G_Info.PlayerId">
+            <summary>
+            玩家的临时ID
+            </summary>
+        </member>
+        <member name="T:Secode.Network.G2C_Info">
+            <summary>
+            用户信息回传
+            </summary>
+        </member>
+        <member name="P:Secode.Network.G2C_Info.PlayerInfo">
+            <summary>
+            玩家数据
+            </summary>
+        </member>
+        <member name="T:Secode.Network.C2G_Players">
+            <summary>
+            请求用户列表
+            </summary>
+        </member>
+        <member name="P:Secode.Network.C2G_Players.PlayerId">
+            <summary>
+            玩家的临时ID
+            </summary>
+        </member>
+        <member name="T:Secode.Network.G2C_Players">
+            <summary>
+            用户列表回传
+            </summary>
+        </member>
+        <member name="P:Secode.Network.G2C_Players.PlayerId">
+            <summary>
+            玩家的临时ID列表
+            </summary>
+        </member>
+        <member name="T:Secode.Network.Frame_PlayerMove">
+            <summary>
+            用户移动消息
+            </summary>
+        </member>
+        <member name="T:Secode.Network.UnitInfo">
+            <summary>
+            单位信息
+            </summary>
+        </member>
+        <member name="T:Secode.Network.Actor_CreateUnits">
+            <summary>
+            创建单位
+            </summary>
+        </member>
+        <member name="T:Secode.Network.C2G_EnterMap">
+            <summary>
+            进入Map消息
+            </summary>
+        </member>
+        <member name="T:Secode.Network.G2C_EnterMap">
+            <summary>
+            进入Map回传
+            </summary>
+        </member>
+        <member name="T:Secode.Network.C2R_Ping">
+            <summary>
+            Ping连接
+            </summary>
+        </member>
+        <member name="T:Secode.Network.R2C_Ping">
+            <summary>
+            Ping连接回传
+            </summary>
+        </member>
+        <member name="T:Secode.Network.C2M_Reload">
+            <summary>
+            重新加载
+            </summary>
+        </member>
+        <member name="P:Secode.Network.C2M_Reload.Key">
+            <summary>
+            请求密钥
+            </summary>
+        </member>
+        <member name="T:Secode.Network.M2C_Reload">
+            <summary>
+            重新加载回传
+            </summary>
+        </member>
+        <member name="T:Microsoft.IO.RecyclableMemoryStreamManager">
+            <summary>
+            Manages pools of RecyclableMemoryStream objects.
+            </summary>
+            <remarks>
+            There are two pools managed in here. The small pool contains same-sized buffers that are handed to streams
+            as they write more data.
+            
+            For scenarios that need to call GetBuffer(), the large pool contains buffers of various sizes, all
+            multiples of LargeBufferMultiple (1 MB by default). They are split by size to avoid overly-wasteful buffer
+            usage. There should be far fewer 8 MB buffers than 1 MB buffers, for example.
+            </remarks>
+        </member>
+        <member name="T:Microsoft.IO.RecyclableMemoryStreamManager.EventHandler">
+            <summary>
+            Generic delegate for handling events without any arguments.
+            </summary>
+        </member>
+        <member name="T:Microsoft.IO.RecyclableMemoryStreamManager.LargeBufferDiscardedEventHandler">
+            <summary>
+            Delegate for handling large buffer discard reports.
+            </summary>
+            <param name="reason">Reason the buffer was discarded.</param>
+        </member>
+        <member name="T:Microsoft.IO.RecyclableMemoryStreamManager.StreamLengthReportHandler">
+            <summary>
+            Delegate for handling reports of stream size when streams are allocated
+            </summary>
+            <param name="bytes">Bytes allocated.</param>
+        </member>
+        <member name="T:Microsoft.IO.RecyclableMemoryStreamManager.UsageReportEventHandler">
+            <summary>
+            Delegate for handling periodic reporting of memory use statistics.
+            </summary>
+            <param name="smallPoolInUseBytes">Bytes currently in use in the small pool.</param>
+            <param name="smallPoolFreeBytes">Bytes currently free in the small pool.</param>
+            <param name="largePoolInUseBytes">Bytes currently in use in the large pool.</param>
+            <param name="largePoolFreeBytes">Bytes currently free in the large pool.</param>
+        </member>
+        <member name="F:Microsoft.IO.RecyclableMemoryStreamManager.largePools">
+            <summary>
+            pools[0] = 1x largeBufferMultiple buffers
+            pools[1] = 2x largeBufferMultiple buffers
+            etc., up to maximumBufferSize
+            </summary>
+        </member>
+        <member name="M:Microsoft.IO.RecyclableMemoryStreamManager.#ctor">
+            <summary>
+            Initializes the memory manager with the default block/buffer specifications.
+            </summary>
+        </member>
+        <member name="M:Microsoft.IO.RecyclableMemoryStreamManager.#ctor(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Initializes the memory manager with the given block requiredSize.
+            </summary>
+            <param name="blockSize">Size of each block that is pooled. Must be > 0.</param>
+            <param name="largeBufferMultiple">Each large buffer will be a multiple of this value.</param>
+            <param name="maximumBufferSize">Buffers larger than this are not pooled</param>
+            <exception cref="T:System.ArgumentOutOfRangeException">blockSize is not a positive number, or largeBufferMultiple is not a positive number, or maximumBufferSize is less than blockSize.</exception>
+            <exception cref="T:System.ArgumentException">maximumBufferSize is not a multiple of largeBufferMultiple</exception>
+        </member>
+        <member name="P:Microsoft.IO.RecyclableMemoryStreamManager.BlockSize">
+            <summary>
+            The size of each block. It must be set at creation and cannot be changed.
+            </summary>
+        </member>
+        <member name="P:Microsoft.IO.RecyclableMemoryStreamManager.LargeBufferMultiple">
+            <summary>
+            All buffers are multiples of this number. It must be set at creation and cannot be changed.
+            </summary>
+        </member>
+        <member name="P:Microsoft.IO.RecyclableMemoryStreamManager.MaximumBufferSize">
+            <summary>
+            Gets or sets the maximum buffer size.
+            </summary>
+            <remarks>Any buffer that is returned to the pool that is larger than this will be
+            discarded and garbage collected.</remarks>
+        </member>
+        <member name="P:Microsoft.IO.RecyclableMemoryStreamManager.SmallPoolFreeSize">
+            <summary>
+            Number of bytes in small pool not currently in use
+            </summary>
+        </member>
+        <member name="P:Microsoft.IO.RecyclableMemoryStreamManager.SmallPoolInUseSize">
+            <summary>
+            Number of bytes currently in use by stream from the small pool
+            </summary>
+        </member>
+        <member name="P:Microsoft.IO.RecyclableMemoryStreamManager.LargePoolFreeSize">
+            <summary>
+            Number of bytes in large pool not currently in use
+            </summary>
+        </member>
+        <member name="P:Microsoft.IO.RecyclableMemoryStreamManager.LargePoolInUseSize">
+            <summary>
+            Number of bytes currently in use by streams from the large pool
+            </summary>
+        </member>
+        <member name="P:Microsoft.IO.RecyclableMemoryStreamManager.SmallBlocksFree">
+            <summary>
+            How many blocks are in the small pool
+            </summary>
+        </member>
+        <member name="P:Microsoft.IO.RecyclableMemoryStreamManager.LargeBuffersFree">
+            <summary>
+            How many buffers are in the large pool
+            </summary>
+        </member>
+        <member name="P:Microsoft.IO.RecyclableMemoryStreamManager.MaximumFreeSmallPoolBytes">
+            <summary>
+            How many bytes of small free blocks to allow before we start dropping
+            those returned to us.
+            </summary>
+        </member>
+        <member name="P:Microsoft.IO.RecyclableMemoryStreamManager.MaximumFreeLargePoolBytes">
+            <summary>
+            How many bytes of large free buffers to allow before we start dropping
+            those returned to us.
+            </summary>
+        </member>
+        <member name="P:Microsoft.IO.RecyclableMemoryStreamManager.MaximumStreamCapacity">
+            <summary>
+            Maximum stream capacity in bytes. Attempts to set a larger capacity will
+            result in an exception.
+            </summary>
+            <remarks>A value of 0 indicates no limit.</remarks>
+        </member>
+        <member name="P:Microsoft.IO.RecyclableMemoryStreamManager.GenerateCallStacks">
+            <summary>
+            Whether to save callstacks for stream allocations. This can help in debugging.
+            It should NEVER be turned on generally in production.
+            </summary>
+        </member>
+        <member name="P:Microsoft.IO.RecyclableMemoryStreamManager.AggressiveBufferReturn">
+            <summary>
+            Whether dirty buffers can be immediately returned to the buffer pool. E.g. when GetBuffer() is called on
+            a stream and creates a single large buffer, if this setting is enabled, the other blocks will be returned
+            to the buffer pool immediately.
+            Note when enabling this setting that the user is responsible for ensuring that any buffer previously
+            retrieved from a stream which is subsequently modified is not used after modification (as it may no longer
+            be valid).
+            </summary>
+        </member>
+        <member name="M:Microsoft.IO.RecyclableMemoryStreamManager.GetBlock">
+            <summary>
+            Removes and returns a single block from the pool.
+            </summary>
+            <returns>A byte[] array</returns>
+        </member>
+        <member name="M:Microsoft.IO.RecyclableMemoryStreamManager.GetLargeBuffer(System.Int32,System.String)">
+            <summary>
+            Returns a buffer of arbitrary size from the large buffer pool. This buffer
+            will be at least the requiredSize and always be a multiple of largeBufferMultiple.
+            </summary>
+            <param name="requiredSize">The minimum length of the buffer</param>
+            <param name="tag">The tag of the stream returning this buffer, for logging if necessary.</param>
+            <returns>A buffer of at least the required size.</returns>
+        </member>
+        <member name="M:Microsoft.IO.RecyclableMemoryStreamManager.ReturnLargeBuffer(System.Byte[],System.String)">
+            <summary>
+            Returns the buffer to the large pool
+            </summary>
+            <param name="buffer">The buffer to return.</param>
+            <param name="tag">The tag of the stream returning this buffer, for logging if necessary.</param>
+            <exception cref="T:System.ArgumentNullException">buffer is null</exception>
+            <exception cref="T:System.ArgumentException">buffer.Length is not a multiple of LargeBufferMultiple (it did not originate from this pool)</exception>
+        </member>
+        <member name="M:Microsoft.IO.RecyclableMemoryStreamManager.ReturnBlocks(System.Collections.Generic.ICollection{System.Byte[]},System.String)">
+            <summary>
+            Returns the blocks to the pool
+            </summary>
+            <param name="blocks">Collection of blocks to return to the pool</param>
+            <param name="tag">The tag of the stream returning these blocks, for logging if necessary.</param>
+            <exception cref="T:System.ArgumentNullException">blocks is null</exception>
+            <exception cref="T:System.ArgumentException">blocks contains buffers that are the wrong size (or null) for this memory manager</exception>
+        </member>
+        <member name="M:Microsoft.IO.RecyclableMemoryStreamManager.GetStream">
+            <summary>
+            Retrieve a new MemoryStream object with no tag and a default initial capacity.
+            </summary>
+            <returns>A MemoryStream.</returns>
+        </member>
+        <member name="M:Microsoft.IO.RecyclableMemoryStreamManager.GetStream(System.String)">
+            <summary>
+            Retrieve a new MemoryStream object with the given tag and a default initial capacity.
+            </summary>
+            <param name="tag">A tag which can be used to track the source of the stream.</param>
+            <returns>A MemoryStream.</returns>
+        </member>
+        <member name="M:Microsoft.IO.RecyclableMemoryStreamManager.GetStream(System.String,System.Int32)">
+            <summary>
+            Retrieve a new MemoryStream object with the given tag and at least the given capacity.
+            </summary>
+            <param name="tag">A tag which can be used to track the source of the stream.</param>
+            <param name="requiredSize">The minimum desired capacity for the stream.</param>
+            <returns>A MemoryStream.</returns>
+        </member>
+        <member name="M:Microsoft.IO.RecyclableMemoryStreamManager.GetStream(System.String,System.Int32,System.Boolean)">
+            <summary>
+            Retrieve a new MemoryStream object with the given tag and at least the given capacity, possibly using
+            a single continugous underlying buffer.
+            </summary>
+            <remarks>Retrieving a MemoryStream which provides a single contiguous buffer can be useful in situations
+            where the initial size is known and it is desirable to avoid copying data between the smaller underlying
+            buffers to a single large one. This is most helpful when you know that you will always call GetBuffer
+            on the underlying stream.</remarks>
+            <param name="tag">A tag which can be used to track the source of the stream.</param>
+            <param name="requiredSize">The minimum desired capacity for the stream.</param>
+            <param name="asContiguousBuffer">Whether to attempt to use a single contiguous buffer.</param>
+            <returns>A MemoryStream.</returns>
+        </member>
+        <member name="M:Microsoft.IO.RecyclableMemoryStreamManager.GetStream(System.String,System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            Retrieve a new MemoryStream object with the given tag and with contents copied from the provided
+            buffer. The provided buffer is not wrapped or used after construction.
+            </summary>
+            <remarks>The new stream's position is set to the beginning of the stream when returned.</remarks>
+            <param name="tag">A tag which can be used to track the source of the stream.</param>
+            <param name="buffer">The byte buffer to copy data from.</param>
+            <param name="offset">The offset from the start of the buffer to copy from.</param>
+            <param name="count">The number of bytes to copy from the buffer.</param>
+            <returns>A MemoryStream.</returns>
+        </member>
+        <member name="E:Microsoft.IO.RecyclableMemoryStreamManager.BlockCreated">
+            <summary>
+            Triggered when a new block is created.
+            </summary>
+        </member>
+        <member name="E:Microsoft.IO.RecyclableMemoryStreamManager.BlockDiscarded">
+            <summary>
+            Triggered when a new block is created.
+            </summary>
+        </member>
+        <member name="E:Microsoft.IO.RecyclableMemoryStreamManager.LargeBufferCreated">
+            <summary>
+            Triggered when a new large buffer is created.
+            </summary>
+        </member>
+        <member name="E:Microsoft.IO.RecyclableMemoryStreamManager.StreamCreated">
+            <summary>
+            Triggered when a new stream is created.
+            </summary>
+        </member>
+        <member name="E:Microsoft.IO.RecyclableMemoryStreamManager.StreamDisposed">
+            <summary>
+            Triggered when a stream is disposed.
+            </summary>
+        </member>
+        <member name="E:Microsoft.IO.RecyclableMemoryStreamManager.StreamFinalized">
+            <summary>
+            Triggered when a stream is finalized.
+            </summary>
+        </member>
+        <member name="E:Microsoft.IO.RecyclableMemoryStreamManager.StreamLength">
+            <summary>
+            Triggered when a stream is finalized.
+            </summary>
+        </member>
+        <member name="E:Microsoft.IO.RecyclableMemoryStreamManager.StreamConvertedToArray">
+            <summary>
+            Triggered when a user converts a stream to array.
+            </summary>
+        </member>
+        <member name="E:Microsoft.IO.RecyclableMemoryStreamManager.LargeBufferDiscarded">
+            <summary>
+            Triggered when a large buffer is discarded, along with the reason for the discard.
+            </summary>
+        </member>
+        <member name="E:Microsoft.IO.RecyclableMemoryStreamManager.UsageReport">
+            <summary>
+            Periodically triggered to report usage statistics.
+            </summary>
+        </member>
+        <member name="T:Microsoft.IO.RecyclableMemoryStream">
+            <summary>
+            MemoryStream implementation that deals with pooling and managing memory streams which use potentially large
+            buffers.
+            </summary>
+            <remarks>
+            This class works in tandem with the RecylableMemoryStreamManager to supply MemoryStream
+            objects to callers, while avoiding these specific problems:
+            1. LOH allocations - since all large buffers are pooled, they will never incur a Gen2 GC
+            2. Memory waste - A standard memory stream doubles its size when it runs out of room. This
+            leads to continual memory growth as each stream approaches the maximum allowed size.
+            3. Memory copying - Each time a MemoryStream grows, all the bytes are copied into new buffers.
+            This implementation only copies the bytes when GetBuffer is called.
+            4. Memory fragmentation - By using homogeneous buffer sizes, it ensures that blocks of memory
+            can be easily reused.
+            
+            The stream is implemented on top of a series of uniformly-sized blocks. As the stream's length grows,
+            additional blocks are retrieved from the memory manager. It is these blocks that are pooled, not the stream
+            object itself.
+            
+            The biggest wrinkle in this implementation is when GetBuffer() is called. This requires a single 
+            contiguous buffer. If only a single block is in use, then that block is returned. If multiple blocks 
+            are in use, we retrieve a larger buffer from the memory manager. These large buffers are also pooled, 
+            split by size--they are multiples of a chunk size (1 MB by default).
+            
+            Once a large buffer is assigned to the stream the blocks are NEVER again used for this stream. All operations take place on the 
+            large buffer. The large buffer can be replaced by a larger buffer from the pool as needed. All blocks and large buffers 
+            are maintained in the stream until the stream is disposed (unless AggressiveBufferReturn is enabled in the stream manager).
+            
+            </remarks>
+        </member>
+        <member name="F:Microsoft.IO.RecyclableMemoryStream.blocks">
+            <summary>
+            All of these blocks must be the same size
+            </summary>
+        </member>
+        <member name="F:Microsoft.IO.RecyclableMemoryStream.byteBuffer">
+            <summary>
+            This buffer exists so that WriteByte can forward all of its calls to Write
+            without creating a new byte[] buffer on every call.
+            </summary>
+        </member>
+        <member name="F:Microsoft.IO.RecyclableMemoryStream.dirtyBuffers">
+            <summary>
+            This list is used to store buffers once they're replaced by something larger.
+            This is for the cases where you have users of this class that may hold onto the buffers longer
+            than they should and you want to prevent race conditions which could corrupt the data.
+            </summary>
+        </member>
+        <member name="F:Microsoft.IO.RecyclableMemoryStream.largeBuffer">
+            <summary>
+            This is only set by GetBuffer() if the necessary buffer is larger than a single block size, or on
+            construction if the caller immediately requests a single large buffer.
+            </summary>
+            <remarks>If this field is non-null, it contains the concatenation of the bytes found in the individual
+            blocks. Once it is created, this (or a larger) largeBuffer will be used for the life of the stream.
+            </remarks>
+        </member>
+        <member name="P:Microsoft.IO.RecyclableMemoryStream.Id">
+            <summary>
+            Unique identifier for this stream across it's entire lifetime
+            </summary>
+            <exception cref="T:System.ObjectDisposedException">Object has been disposed</exception>
+        </member>
+        <member name="P:Microsoft.IO.RecyclableMemoryStream.Tag">
+            <summary>
+            A temporary identifier for the current usage of this stream.
+            </summary>
+            <exception cref="T:System.ObjectDisposedException">Object has been disposed</exception>
+        </member>
+        <member name="P:Microsoft.IO.RecyclableMemoryStream.MemoryManager">
+            <summary>
+            Gets the memory manager being used by this stream.
+            </summary>
+            <exception cref="T:System.ObjectDisposedException">Object has been disposed</exception>
+        </member>
+        <member name="P:Microsoft.IO.RecyclableMemoryStream.AllocationStack">
+            <summary>
+            Callstack of the constructor. It is only set if MemoryManager.GenerateCallStacks is true,
+            which should only be in debugging situations.
+            </summary>
+        </member>
+        <member name="P:Microsoft.IO.RecyclableMemoryStream.DisposeStack">
+            <summary>
+            Callstack of the Dispose call. It is only set if MemoryManager.GenerateCallStacks is true,
+            which should only be in debugging situations.
+            </summary>
+        </member>
+        <member name="M:Microsoft.IO.RecyclableMemoryStream.#ctor(Microsoft.IO.RecyclableMemoryStreamManager)">
+            <summary>
+            Allocate a new RecyclableMemoryStream object.
+            </summary>
+            <param name="memoryManager">The memory manager</param>
+        </member>
+        <member name="M:Microsoft.IO.RecyclableMemoryStream.#ctor(Microsoft.IO.RecyclableMemoryStreamManager,System.String)">
+            <summary>
+            Allocate a new RecyclableMemoryStream object
+            </summary>
+            <param name="memoryManager">The memory manager</param>
+            <param name="tag">A string identifying this stream for logging and debugging purposes</param>
+        </member>
+        <member name="M:Microsoft.IO.RecyclableMemoryStream.#ctor(Microsoft.IO.RecyclableMemoryStreamManager,System.String,System.Int32)">
+            <summary>
+            Allocate a new RecyclableMemoryStream object
+            </summary>
+            <param name="memoryManager">The memory manager</param>
+            <param name="tag">A string identifying this stream for logging and debugging purposes</param>
+            <param name="requestedSize">The initial requested size to prevent future allocations</param>
+        </member>
+        <member name="M:Microsoft.IO.RecyclableMemoryStream.#ctor(Microsoft.IO.RecyclableMemoryStreamManager,System.String,System.Int32,System.Byte[])">
+            <summary>
+            Allocate a new RecyclableMemoryStream object
+            </summary>
+            <param name="memoryManager">The memory manager</param>
+            <param name="tag">A string identifying this stream for logging and debugging purposes</param>
+            <param name="requestedSize">The initial requested size to prevent future allocations</param>
+            <param name="initialLargeBuffer">An initial buffer to use. This buffer will be owned by the stream and returned to the memory manager upon Dispose.</param>
+        </member>
+        <member name="M:Microsoft.IO.RecyclableMemoryStream.Dispose(System.Boolean)">
+            <summary>
+            Returns the memory used by this stream back to the pool.
+            </summary>
+            <param name="disposing">Whether we're disposing (true), or being called by the finalizer (false)</param>
+        </member>
+        <member name="M:Microsoft.IO.RecyclableMemoryStream.Close">
+            <summary>
+            Equivalent to Dispose
+            </summary>
+        </member>
+        <member name="P:Microsoft.IO.RecyclableMemoryStream.Capacity">
+            <summary>
+            Gets or sets the capacity
+            </summary>
+            <remarks>Capacity is always in multiples of the memory manager's block size, unless
+            the large buffer is in use.  Capacity never decreases during a stream's lifetime. 
+            Explicitly setting the capacity to a lower value than the current value will have no effect. 
+            This is because the buffers are all pooled by chunks and there's little reason to 
+            allow stream truncation.
+            </remarks>
+            <exception cref="T:System.ObjectDisposedException">Object has been disposed</exception>
+        </member>
+        <member name="P:Microsoft.IO.RecyclableMemoryStream.Length">
+            <summary>
+            Gets the number of bytes written to this stream.
+            </summary>
+            <exception cref="T:System.ObjectDisposedException">Object has been disposed</exception>
+        </member>
+        <member name="P:Microsoft.IO.RecyclableMemoryStream.Position">
+            <summary>
+            Gets the current position in the stream
+            </summary>
+            <exception cref="T:System.ObjectDisposedException">Object has been disposed</exception>
+        </member>
+        <member name="P:Microsoft.IO.RecyclableMemoryStream.CanRead">
+            <summary>
+            Whether the stream can currently read
+            </summary>
+        </member>
+        <member name="P:Microsoft.IO.RecyclableMemoryStream.CanSeek">
+            <summary>
+            Whether the stream can currently seek
+            </summary>
+        </member>
+        <member name="P:Microsoft.IO.RecyclableMemoryStream.CanTimeout">
+            <summary>
+            Always false
+            </summary>
+        </member>
+        <member name="P:Microsoft.IO.RecyclableMemoryStream.CanWrite">
+            <summary>
+            Whether the stream can currently write
+            </summary>
+        </member>
+        <member name="M:Microsoft.IO.RecyclableMemoryStream.GetBuffer">
+            <summary>
+            Returns a single buffer containing the contents of the stream.
+            The buffer may be longer than the stream length.
+            </summary>
+            <returns>A byte[] buffer</returns>
+            <remarks>IMPORTANT: Doing a Write() after calling GetBuffer() invalidates the buffer. The old buffer is held onto
+            until Dispose is called, but the next time GetBuffer() is called, a new buffer from the pool will be required.</remarks>
+            <exception cref="T:System.ObjectDisposedException">Object has been disposed</exception>
+        </member>
+        <member name="M:Microsoft.IO.RecyclableMemoryStream.ToArray">
+            <summary>
+            Returns a new array with a copy of the buffer's contents. You should almost certainly be using GetBuffer combined with the Length to 
+            access the bytes in this stream. Calling ToArray will destroy the benefits of pooled buffers, but it is included
+            for the sake of completeness.
+            </summary>
+            <exception cref="T:System.ObjectDisposedException">Object has been disposed</exception>
+        </member>
+        <member name="M:Microsoft.IO.RecyclableMemoryStream.Read(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            Reads from the current position into the provided buffer
+            </summary>
+            <param name="buffer">Destination buffer</param>
+            <param name="offset">Offset into buffer at which to start placing the read bytes.</param>
+            <param name="count">Number of bytes to read.</param>
+            <returns>The number of bytes read</returns>
+            <exception cref="T:System.ArgumentNullException">buffer is null</exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">offset or count is less than 0</exception>
+            <exception cref="T:System.ArgumentException">offset subtracted from the buffer length is less than count</exception>
+            <exception cref="T:System.ObjectDisposedException">Object has been disposed</exception>
+        </member>
+        <member name="M:Microsoft.IO.RecyclableMemoryStream.SafeRead(System.Byte[],System.Int32,System.Int32,System.Int32@)">
+            <summary>
+            Reads from the specified position into the provided buffer
+            </summary>
+            <param name="buffer">Destination buffer</param>
+            <param name="offset">Offset into buffer at which to start placing the read bytes.</param>
+            <param name="count">Number of bytes to read.</param>
+            <param name="streamPosition">Position in the stream to start reading from</param>
+            <returns>The number of bytes read</returns>
+            <exception cref="T:System.ArgumentNullException">buffer is null</exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">offset or count is less than 0</exception>
+            <exception cref="T:System.ArgumentException">offset subtracted from the buffer length is less than count</exception>
+            <exception cref="T:System.ObjectDisposedException">Object has been disposed</exception>
+        </member>
+        <member name="M:Microsoft.IO.RecyclableMemoryStream.Write(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            Writes the buffer to the stream
+            </summary>
+            <param name="buffer">Source buffer</param>
+            <param name="offset">Start position</param>
+            <param name="count">Number of bytes to write</param>
+            <exception cref="T:System.ArgumentNullException">buffer is null</exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">offset or count is negative</exception>
+            <exception cref="T:System.ArgumentException">buffer.Length - offset is not less than count</exception>
+            <exception cref="T:System.ObjectDisposedException">Object has been disposed</exception>
+        </member>
+        <member name="M:Microsoft.IO.RecyclableMemoryStream.ToString">
+            <summary>
+            Returns a useful string for debugging. This should not normally be called in actual production code.
+            </summary>
+        </member>
+        <member name="M:Microsoft.IO.RecyclableMemoryStream.WriteByte(System.Byte)">
+            <summary>
+            Writes a single byte to the current position in the stream.
+            </summary>
+            <param name="value">byte value to write</param>
+            <exception cref="T:System.ObjectDisposedException">Object has been disposed</exception>
+        </member>
+        <member name="M:Microsoft.IO.RecyclableMemoryStream.ReadByte">
+            <summary>
+            Reads a single byte from the current position in the stream.
+            </summary>
+            <returns>The byte at the current position, or -1 if the position is at the end of the stream.</returns>
+            <exception cref="T:System.ObjectDisposedException">Object has been disposed</exception>
+        </member>
+        <member name="M:Microsoft.IO.RecyclableMemoryStream.SafeReadByte(System.Int32@)">
+            <summary>
+            Reads a single byte from the specified position in the stream.
+            </summary>
+            <param name="streamPosition">The position in the stream to read from</param>
+            <returns>The byte at the current position, or -1 if the position is at the end of the stream.</returns>
+            <exception cref="T:System.ObjectDisposedException">Object has been disposed</exception>
+        </member>
+        <member name="M:Microsoft.IO.RecyclableMemoryStream.SetLength(System.Int64)">
+            <summary>
+            Sets the length of the stream
+            </summary>
+            <exception cref="T:System.ArgumentOutOfRangeException">value is negative or larger than MaxStreamLength</exception>
+            <exception cref="T:System.ObjectDisposedException">Object has been disposed</exception>
+        </member>
+        <member name="M:Microsoft.IO.RecyclableMemoryStream.Seek(System.Int64,System.IO.SeekOrigin)">
+            <summary>
+            Sets the position to the offset from the seek location
+            </summary>
+            <param name="offset">How many bytes to move</param>
+            <param name="loc">From where</param>
+            <returns>The new position</returns>
+            <exception cref="T:System.ObjectDisposedException">Object has been disposed</exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">offset is larger than MaxStreamLength</exception>
+            <exception cref="T:System.ArgumentException">Invalid seek origin</exception>
+            <exception cref="T:System.IO.IOException">Attempt to set negative position</exception>
+        </member>
+        <member name="M:Microsoft.IO.RecyclableMemoryStream.WriteTo(System.IO.Stream)">
+            <summary>
+            Synchronously writes this stream's bytes to the parameter stream.
+            </summary>
+            <param name="stream">Destination stream</param>
+            <remarks>Important: This does a synchronous write, which may not be desired in some situations</remarks>
+        </member>
+        <member name="M:Microsoft.IO.RecyclableMemoryStream.ReleaseLargeBuffer">
+            <summary>
+            Release the large buffer (either stores it for eventual release or returns it immediately).
+            </summary>
+        </member>
+    </members>
+</doc>
