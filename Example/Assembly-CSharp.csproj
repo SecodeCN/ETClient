@@ -58,11 +58,26 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Example\Scripts\Handlers\Actor_TestHandler.cs" />
-    <Compile Include="Assets\Example\Scripts\Handlers\Frame_ClickMapHandler.cs" />
-    <Compile Include="Assets\Example\Scripts\Handlers\TestHotfixSubscribMonoEvent_LogString.cs" />
-    <Compile Include="Assets\Example\Scripts\Init.cs" />
-    <None Include="Assets\Example\Readme.txt" />
+    <Compile Include="Assets\1stParty\Secode\Netwrok\Example\Scripts\Init.cs" />
+    <Compile Include="Assets\1stParty\Secode\Netwrok\Scripts\ClientController.cs" />
+    <Compile Include="Assets\1stParty\Secode\Netwrok\Scripts\Components\Base\AnimatorComponent.cs" />
+    <Compile Include="Assets\1stParty\Secode\Netwrok\Scripts\Components\Base\CameraComponent.cs" />
+    <Compile Include="Assets\1stParty\Secode\Netwrok\Scripts\Components\Base\MoveComponent.cs" />
+    <Compile Include="Assets\1stParty\Secode\Netwrok\Scripts\Components\Base\SceneChangeComponent.cs" />
+    <Compile Include="Assets\1stParty\Secode\Netwrok\Scripts\Components\Base\VRMoveComponent.cs" />
+    <Compile Include="Assets\1stParty\Secode\Netwrok\Scripts\Components\Entity\Unit.cs" />
+    <Compile Include="Assets\1stParty\Secode\Netwrok\Scripts\Components\Entity\UnityWebRequestAsync.cs" />
+    <Compile Include="Assets\1stParty\Secode\Netwrok\Scripts\Components\Entity\WWWAsync.cs" />
+    <Compile Include="Assets\1stParty\Secode\Netwrok\Scripts\Components\Operator\UnitSyncComponent.cs" />
+    <Compile Include="Assets\1stParty\Secode\Netwrok\Scripts\Handlers\Actor_CreateUnitsHandler.cs" />
+    <Compile Include="Assets\1stParty\Secode\Netwrok\Scripts\Handlers\Actor_TestHandler.cs" />
+    <Compile Include="Assets\1stParty\Secode\Netwrok\Scripts\Handlers\Frame_PlayerMoveHandler.cs" />
+    <Compile Include="Assets\1stParty\Secode\Netwrok\Scripts\Handlers\TestHotfixSubscribMonoEvent_LogString.cs" />
+    <Compile Include="Assets\1stParty\Secode\Netwrok\Scripts\Helper\ActionHelper.cs" />
+    <Compile Include="Assets\1stParty\Secode\Netwrok\Scripts\Helper\PathHelper.cs" />
+    <Compile Include="Assets\1stParty\Secode\Netwrok\Scripts\Helper\PositionHelper.cs" />
+    <Compile Include="Assets\1stParty\Secode\Netwrok\Scripts\Helper\ResourcesHelper.cs" />
+    <Compile Include="Assets\1stParty\Secode\Netwrok\Scripts\Helper\UnitHelper.cs" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>P:/UnityProjects/Components/ETClient/Example/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>
@@ -264,6 +279,15 @@
     <Reference Include="UnityEngine.SpatialTracking">
       <HintPath>E:/Unity2018.1.0/Editor/Data/UnityExtensions/Unity/UnitySpatialTracking/RuntimeEditor/UnityEngine.SpatialTracking.dll</HintPath>
     </Reference>
+    <Reference Include="MongoDB.Bson">
+      <HintPath>P:/UnityProjects/Components/ETClient/Example/Assets/Plugins/Secode.Network.Client/MongoDB.Bson.dll</HintPath>
+    </Reference>
+    <Reference Include="Secode.Network.Client">
+      <HintPath>P:/UnityProjects/Components/ETClient/Example/Assets/Plugins/Secode.Network.Client/Secode.Network.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="Secode.Protobuf">
+      <HintPath>P:/UnityProjects/Components/ETClient/Example/Assets/Plugins/Secode.Network.Client/Secode.Protobuf.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.Analytics">
       <HintPath>C:/Users/wrq/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.analytics@2.0.16/UnityEngine.Analytics.dll</HintPath>
     </Reference>
@@ -272,9 +296,6 @@
     </Reference>
     <Reference Include="UnityEngine.StandardEvents">
       <HintPath>C:/Users/wrq/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.standardevents@1.0.13/UnityEngine.StandardEvents.dll</HintPath>
-    </Reference>
-    <Reference Include="ETClient">
-      <HintPath>P:/UnityProjects/Components/ETClient/Example/Assets/Plugins/ETClient.dll</HintPath>
     </Reference>
     <Reference Include="mscorlib">
       <HintPath>E:/Unity2018.1.0/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/mscorlib.dll</HintPath>
