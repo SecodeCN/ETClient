@@ -6,23 +6,42 @@ namespace Secode.Network.Client
 {
     public class Init : MonoBehaviour
     {
-        public string ServerIP = "127.0.0.1:10002";
+        public const string ServerIP = "192.168.16.252:10002";
+
+        [Header("登录配置")]
 
         public InputField UserIDInput;
         public InputField PasswordInput;
+
+        [Header("Gate配置")]
 
         public Transform GatesContent;
         public GameObject GatesContentDemo;
         public GameObject NewGatePanel;
         public InputField NewGateNameInput;
 
+        [Header("面板配置")]
+
         public Transform LoginPanel;
         public Transform GatesPanel;
+
+        [Header("集合配置")]
+
+        public GameObject UI;
+
+        [Header("角色配置")]
+
+        public GameObject MyPlayer;
+        public GameObject PlayerDemo;
 
         private void Start()
         {
             ClientController.Default.Init();
-            ClientController.ServerIP = "127.0.0.1:10002";
+            ClientController.ServerIP = ServerIP;
+
+            Log.Info(ClientController.ServerIP);
+
+            UI.gameObject.SetActive(true);
 
             LoginPanel.gameObject.SetActive(true);
             GatesPanel.gameObject.SetActive(false);
@@ -38,6 +57,8 @@ namespace Secode.Network.Client
             ExitButton.onClick.Add(Exit);
             var NewGateOKButton = NewGatePanel.transform.Find("OK").GetComponent<Button>();
             NewGateOKButton.onClick.Add(NewGate);
+
+            ClientController.CreateUnitAction = CreateUnit;
         }
 
         public async void Login()
@@ -113,9 +134,8 @@ namespace Secode.Network.Client
 
             if (ans)
             {
-                var go = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-                go.name = ClientController.MyUnit.Id.ToString();
-                ClientController.MyUnit.GameObject = go;
+                ClientController.MyUnit.GameObject = MyPlayer;
+                UI.SetActive(false);
             }
             else
             {
@@ -143,6 +163,16 @@ namespace Secode.Network.Client
             {
                 LoginPanel.gameObject.SetActive(true);
             }
+        }
+
+        public void CreateUnit(Unit unit)
+        {
+            var go = Instantiate(PlayerDemo);
+            go.transform.position = new Vector3(0, 1.2f, 0);
+            go.name = unit.Id.ToString();
+            unit.GameObject = go;
+
+            unit.AddComponent<VRMoveComponent>();
         }
     }
 

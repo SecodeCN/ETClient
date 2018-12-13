@@ -95,14 +95,51 @@
             </summary>
             <param name="msg"></param>
         </member>
+        <member name="T:Secode.Network.LogHandler">
+            <summary>
+            Log 处理器
+            </summary>
+        </member>
         <member name="P:Secode.Network.LogHandler.LogPath">
             <summary>
             输出路径
             </summary>
         </member>
+        <member name="T:Secode.Network.LogHandler.LogInfo">
+            <summary>
+            Log消息格式
+            </summary>
+        </member>
+        <member name="F:Secode.Network.LogHandler.WaittingList">
+            <summary>
+            等待打印队列
+            </summary>
+        </member>
         <member name="M:Secode.Network.LogHandler.Log(Secode.Network.LogType,System.Object)">
             <summary>
             Log输出
+            </summary>
+            <param name="type"></param>
+            <param name="msg"></param>
+        </member>
+        <member name="F:Secode.Network.LogHandler.LogThread">
+            <summary>
+            唯一Log线程
+            </summary>
+        </member>
+        <member name="M:Secode.Network.LogHandler.StartLog">
+            <summary>
+            启动Log线程
+            </summary>
+        </member>
+        <member name="M:Secode.Network.LogHandler.StopLog">
+            <summary>
+            停止Log线程
+            </summary>
+        </member>
+        <member name="M:Secode.Network.LogHandler.DoLog(Secode.Network.LogHandler.LogInfo)">
+            <summary>
+            执行Log写入文件
             </summary>
             <param name="type"></param>
             <param name="msg"></param>
@@ -135,6 +172,337 @@
             <param name="t"></param>
             <returns></returns>
         </member>
+        <member name="M:Secode.Network.Entity.Dispose">
+            <summary>
+            释放回收
+            </summary>
+        </member>
+        <member name="M:Secode.Network.Entity.AddComponent(Secode.Network.Component)">
+            <summary>
+            新增组件
+            </summary>
+            <param name="component"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Secode.Network.Entity.AddComponent(System.Type)">
+            <summary>
+            新增组件
+            </summary>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Secode.Network.Entity.AddComponent``1">
+            <summary>
+            新增组件
+            </summary>
+            <typeparam name="K"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:Secode.Network.Entity.AddComponent``2(``1)">
+            <summary>
+            新增组件
+            </summary>
+            <typeparam name="K"></typeparam>
+            <typeparam name="P1"></typeparam>
+            <param name="p1"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Secode.Network.Entity.AddComponent``3(``1,``2)">
+            <summary>
+            新增组件
+            </summary>
+            <typeparam name="K"></typeparam>
+            <typeparam name="P1"></typeparam>
+            <typeparam name="P2"></typeparam>
+            <param name="p1"></param>
+            <param name="p2"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Secode.Network.Entity.AddComponent``4(``1,``2,``3)">
+            <summary>
+            新增组件
+            </summary>
+            <typeparam name="K"></typeparam>
+            <typeparam name="P1"></typeparam>
+            <typeparam name="P2"></typeparam>
+            <typeparam name="P3"></typeparam>
+            <param name="p1"></param>
+            <param name="p2"></param>
+            <param name="p3"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Secode.Network.Entity.RemoveComponent``1">
+            <summary>
+            移除组件
+            </summary>
+            <typeparam name="K"></typeparam>
+        </member>
+        <member name="M:Secode.Network.Entity.RemoveComponent(System.Type)">
+            <summary>
+            移除组件
+            </summary>
+            <param name="type"></param>
+        </member>
+        <member name="M:Secode.Network.Entity.GetComponent``1">
+            <summary>
+            获取组件
+            </summary>
+            <typeparam name="K"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:Secode.Network.Entity.Get``1">
+            <summary>
+            获取或新增组件
+            </summary>
+            <typeparam name="K"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:Secode.Network.Entity.GetComponent(System.Type)">
+            <summary>
+            获取组件
+            </summary>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Secode.Network.Entity.Get(System.Type)">
+            <summary>
+            获取或新增组件
+            </summary>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Secode.Network.Entity.GetComponents">
+            <summary>
+            获取所有组件
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="F:Secode.Network.DLLType.Game">
+            <summary>
+            客户端逻辑
+            </summary>
+        </member>
+        <member name="F:Secode.Network.DLLType.Model">
+            <summary>
+            核心
+            </summary>
+        </member>
+        <member name="F:Secode.Network.DLLType.Hotfix">
+            <summary>
+            热更
+            </summary>
+        </member>
+        <member name="F:Secode.Network.DLLType.Editor">
+            <summary>
+            客户端编辑器
+            </summary>
+        </member>
+        <member name="T:Secode.Network.EventSystem">
+            <summary>
+            事件系统
+            </summary>
+        </member>
+        <member name="M:Secode.Network.EventSystem.Add(Secode.Network.DLLType,System.Reflection.Assembly)">
+            <summary>
+            新增资源包
+            </summary>
+            <param name="dllType"></param>
+            <param name="assembly"></param>
+        </member>
+        <member name="M:Secode.Network.EventSystem.RegisterEvent(System.String,Secode.Network.IEvent)">
+            <summary>
+            注册事件
+            </summary>
+            <param name="eventId"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Secode.Network.EventSystem.Get(Secode.Network.DLLType)">
+            <summary>
+            获取资源包
+            </summary>
+            <param name="dllType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Secode.Network.EventSystem.GetTypes(System.Type)">
+            <summary>
+            获取类型
+            </summary>
+            <param name="systemAttributeType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Secode.Network.EventSystem.Add(Secode.Network.Component)">
+            <summary>
+            添加组件
+            </summary>
+            <param name="component"></param>
+        </member>
+        <member name="M:Secode.Network.EventSystem.Remove(System.Int64)">
+            <summary>
+            移除组件
+            </summary>
+            <param name="instanceId"></param>
+        </member>
+        <member name="M:Secode.Network.EventSystem.Get(System.Int64)">
+            <summary>
+            获取组件
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Secode.Network.EventSystem.Awake(Secode.Network.Component)">
+            <summary>
+            初始化
+            </summary>
+            <param name="component"></param>
+        </member>
+        <member name="M:Secode.Network.EventSystem.Awake``1(Secode.Network.Component,``0)">
+            <summary>
+            初始化
+            </summary>
+            <typeparam name="P1"></typeparam>
+            <param name="component"></param>
+            <param name="p1"></param>
+        </member>
+        <member name="M:Secode.Network.EventSystem.Awake``2(Secode.Network.Component,``0,``1)">
+            <summary>
+            初始化
+            </summary>
+            <typeparam name="P1"></typeparam>
+            <typeparam name="P2"></typeparam>
+            <param name="component"></param>
+            <param name="p1"></param>
+            <param name="p2"></param>
+        </member>
+        <member name="M:Secode.Network.EventSystem.Awake``3(Secode.Network.Component,``0,``1,``2)">
+            <summary>
+            初始化
+            </summary>
+            <typeparam name="P1"></typeparam>
+            <typeparam name="P2"></typeparam>
+            <typeparam name="P3"></typeparam>
+            <param name="component"></param>
+            <param name="p1"></param>
+            <param name="p2"></param>
+            <param name="p3"></param>
+        </member>
+        <member name="M:Secode.Network.EventSystem.Change(Secode.Network.Component)">
+            <summary>
+            修改
+            </summary>
+            <param name="component"></param>
+        </member>
+        <member name="M:Secode.Network.EventSystem.Load">
+            <summary>
+            加载
+            </summary>
+        </member>
+        <member name="M:Secode.Network.EventSystem.Start">
+            <summary>
+            启动
+            </summary>
+        </member>
+        <member name="M:Secode.Network.EventSystem.Destroy(Secode.Network.Component)">
+            <summary>
+            销毁组件
+            </summary>
+            <param name="component"></param>
+        </member>
+        <member name="M:Secode.Network.EventSystem.Update">
+            <summary>
+            帧更新
+            </summary>
+        </member>
+        <member name="M:Secode.Network.EventSystem.LateUpdate">
+            <summary>
+            延迟更新
+            </summary>
+        </member>
+        <member name="M:Secode.Network.EventSystem.Run(System.String)">
+            <summary>
+            执行
+            </summary>
+            <param name="type"></param>
+        </member>
+        <member name="M:Secode.Network.EventSystem.Run``1(System.String,``0)">
+            <summary>
+            执行
+            </summary>
+            <typeparam name="A"></typeparam>
+            <param name="type"></param>
+            <param name="a"></param>
+        </member>
+        <member name="M:Secode.Network.EventSystem.Run``2(System.String,``0,``1)">
+            <summary>
+            执行
+            </summary>
+            <typeparam name="A"></typeparam>
+            <typeparam name="B"></typeparam>
+            <param name="type"></param>
+            <param name="a"></param>
+            <param name="b"></param>
+        </member>
+        <member name="M:Secode.Network.EventSystem.Run``3(System.String,``0,``1,``2)">
+            <summary>
+            执行
+            </summary>
+            <typeparam name="A"></typeparam>
+            <typeparam name="B"></typeparam>
+            <typeparam name="C"></typeparam>
+            <param name="type"></param>
+            <param name="a"></param>
+            <param name="b"></param>
+            <param name="c"></param>
+        </member>
+        <member name="M:Secode.Network.EventSystem.Dispose">
+            <summary>
+            清空回收
+            </summary>
+        </member>
+        <member name="T:Secode.Network.ObjectPool">
+            <summary>
+            对象池
+            </summary>
+        </member>
+        <member name="P:Secode.Network.ObjectPool.Name">
+            <summary>
+            名称
+            </summary>
+        </member>
+        <member name="F:Secode.Network.ObjectPool.dictionary">
+            <summary>
+            队列
+            </summary>
+        </member>
+        <member name="M:Secode.Network.ObjectPool.Fetch(System.Type)">
+            <summary>
+            匹配
+            </summary>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Secode.Network.ObjectPool.Fetch``1">
+            <summary>
+            匹配
+            </summary>
+            <typeparam name="T"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:Secode.Network.ObjectPool.Recycle(Secode.Network.Component)">
+            <summary>
+            回收
+            </summary>
+            <param name="obj"></param>
+        </member>
+        <member name="M:Secode.Network.ObjectPool.Clear">
+            <summary>
+            清空
+            </summary>
+        </member>
+        <member name="M:Secode.Network.ObjectPool.Dispose">
+            <summary>
+            释放回收
+            </summary>
+        </member>
         <member name="T:Secode.Network.EnvKey">
             <summary>
             一般使用事件名+变量名
@@ -157,6 +525,26 @@
         <member name="F:Secode.Network.TimerComponent.timeId">
             <summary>
             key: time, value: timer id
+            </summary>
+        </member>
+        <member name="P:Secode.Network.Game.EventSystem">
+            <summary>
+            事件系统
+            </summary>
+        </member>
+        <member name="P:Secode.Network.Game.Scene">
+            <summary>
+            场景
+            </summary>
+        </member>
+        <member name="P:Secode.Network.Game.ObjectPool">
+            <summary>
+            对象池
+            </summary>
+        </member>
+        <member name="M:Secode.Network.Game.Dispose">
+            <summary>
+            释放回收
             </summary>
         </member>
         <member name="T:Secode.Network.Unit">
@@ -311,19 +699,83 @@
             创建一个新Session
             </summary>
         </member>
-        <member name="T:Secode.Network.RpcException">
-            <summary>
-            RPC异常,带ErrorCode
-            </summary>
-        </member>
-        <member name="F:Secode.Network.Session.DebugFrameMessage">
+        <member name="F:Secode.Network.OpcodeHelper.DebugFrameMessage">
             <summary>
             是否Debug输出Frame消息
             </summary>
         </member>
-        <member name="F:Secode.Network.Session.DebugMessage">
+        <member name="F:Secode.Network.OpcodeHelper.DebugActorMessage">
             <summary>
-            是否Debug输出消息
+            是否Debug输出Actor消息
+            </summary>
+        </member>
+        <member name="F:Secode.Network.OpcodeHelper.DebugRPCMessage">
+            <summary>
+            是否Debug输出RPC消息
+            </summary>
+        </member>
+        <member name="F:Secode.Network.OpcodeHelper.DebugInnerMessage">
+            <summary>
+            是否Debug输出内部消息
+            </summary>
+        </member>
+        <member name="P:Secode.Network.OpcodeHelper.OpcodeTypeComponent">
+            <summary>
+            Opcode组件
+            </summary>
+        </member>
+        <member name="M:Secode.Network.OpcodeHelper.IsRPCMessage(System.UInt16)">
+            <summary>
+            是否RPC消息
+            </summary>
+            <param name="opcode"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Secode.Network.OpcodeHelper.IsActorMessage(System.UInt16)">
+            <summary>
+            是否行为消息
+            </summary>
+            <param name="opcode"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Secode.Network.OpcodeHelper.IsHotfixMessage(System.UInt16)">
+            <summary>
+            是否逻辑层消息
+            </summary>
+            <param name="opcode"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Secode.Network.OpcodeHelper.IsOuterMessage(System.UInt16)">
+            <summary>
+            是否外部消息
+            </summary>
+            <param name="opcode"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Secode.Network.OpcodeHelper.IsFrameMessage(System.UInt16)">
+            <summary>
+            是否帧消息
+            </summary>
+            <param name="opcode"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Secode.Network.OpcodeHelper.IsInnerMessage(System.UInt16)">
+            <summary>
+            是否内部消息
+            </summary>
+            <param name="opcode"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Secode.Network.OpcodeHelper.NeedDebug(System.UInt16)">
+            <summary>
+            是否Debug输出
+            </summary>
+            <param name="opcode"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Secode.Network.RpcException">
+            <summary>
+            RPC异常,带ErrorCode
             </summary>
         </member>
         <member name="M:Secode.Network.CircularBuffer.ReadAsync(System.IO.Stream)">

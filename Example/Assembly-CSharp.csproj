@@ -59,6 +59,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\1stParty\Secode\Netwrok\Example\Scripts\Init.cs" />
+    <Compile Include="Assets\1stParty\Secode\Netwrok\Example\Scripts\Input\CameraInput.cs" />
     <Compile Include="Assets\1stParty\Secode\Netwrok\Scripts\ClientController.cs" />
     <Compile Include="Assets\1stParty\Secode\Netwrok\Scripts\Components\Base\AnimatorComponent.cs" />
     <Compile Include="Assets\1stParty\Secode\Netwrok\Scripts\Components\Base\CameraComponent.cs" />

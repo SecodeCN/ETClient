@@ -14,11 +14,8 @@ namespace Secode.Network.Client
                 if (unitComponent.Contain(unitInfo.UnitId)) continue;
                 Unit unit = ComponentFactory.CreateWithId<Unit>(unitInfo.UnitId);
                 unitComponent.Add(unit);
-                unit.AddComponent<VRMoveComponent>();
 
-                var go = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-                go.name = unit.Id.ToString();
-                unit.GameObject = go;
+                ClientController.CreateUnitAction?.Invoke(unit);
             }
         }
     }

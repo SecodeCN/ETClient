@@ -47,7 +47,10 @@ namespace Secode.Network.Client
                 if (msg == null) return;
                 print(type.ToString() + " : " + msg.ToString());
             };
-            Session.DebugFrameMessage = true;
+            OpcodeHelper.DebugFrameMessage = false;
+            OpcodeHelper.DebugActorMessage = true;
+            OpcodeHelper.DebugRPCMessage = true;
+
             ClientManager.Init(typeof(ClientController));
         }
 
@@ -72,7 +75,21 @@ namespace Secode.Network.Client
 
         #endregion
 
-        #region 拓展参数
+        #region 构造参数
+
+        /// <summary>
+        /// 角色模型
+        /// </summary>
+        public static GameObject UnitDemo;
+
+        /// <summary>
+        /// 创建角色事件
+        /// </summary>
+        public static Action<Unit> CreateUnitAction;
+
+        #endregion
+
+        #region 静态拓展参数
 
         /// <summary>
         /// 服务器IP
@@ -132,7 +149,7 @@ namespace Secode.Network.Client
 
         #endregion
 
-        #region 拓展方法
+        #region 静态拓展方法
 
         /// <summary>
         /// 登录
@@ -250,7 +267,8 @@ namespace Secode.Network.Client
         public static void OnApplicationQuit()
         {
             if (!IsInit) return;
-            Game.Close();
+            Game.Dispose();
+            LogHandler.StopLog();
         }
 
         #endregion

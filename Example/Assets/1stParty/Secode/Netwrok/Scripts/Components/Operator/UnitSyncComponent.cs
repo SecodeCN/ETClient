@@ -30,8 +30,17 @@
             ControlUnit = unit;
         }
 
+        private float WaitingTime = 0f;
+        private const float TotalWaitTime = 0.1f;
+
         public void Update()
         {
+            if (WaitingTime > 0)
+            {
+                WaitingTime -= UnityEngine.Time.deltaTime;
+                return;
+            }
+            WaitingTime = TotalWaitTime;
             if (ControlUnit.IsMoved)
             {
                 var info = new Frame_PlayerMove();
